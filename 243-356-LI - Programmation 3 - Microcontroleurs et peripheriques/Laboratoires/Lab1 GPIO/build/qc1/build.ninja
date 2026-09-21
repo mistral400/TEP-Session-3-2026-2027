@@ -53,15 +53,55 @@ build CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026
   DEFINES = -DSTM32F103xB
   DEP_FILE = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/Lab1.c.obj.d
   FLAGS = -g -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -ffunction-sections -fdata-sections -Wall -Wextra -Wno-unused-parameter
-  INCLUDES = -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Core/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Inc"
+  INCLUDES = -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Core/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/src"
   OBJECT_DIR = CMakeFiles/firmware.dir
   OBJECT_FILE_DIR = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src
+
+build CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/lcd.c.obj: C_COMPILER__firmware_unscanned_Debug /Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI$ -$ Programmation$ 3$ -$ Microcontroleurs$ et$ peripheriques/Laboratoires/Lab1$ GPIO/Src/lcd.c || cmake_object_order_depends_target_firmware
+  DEFINES = -DSTM32F103xB
+  DEP_FILE = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/lcd.c.obj.d
+  FLAGS = -g -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -ffunction-sections -fdata-sections -Wall -Wextra -Wno-unused-parameter
+  INCLUDES = -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Core/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/src"
+  OBJECT_DIR = CMakeFiles/firmware.dir
+  OBJECT_FILE_DIR = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src
+
+build CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/main.c.obj: C_COMPILER__firmware_unscanned_Debug /Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI$ -$ Programmation$ 3$ -$ Microcontroleurs$ et$ peripheriques/Laboratoires/Lab1$ GPIO/Src/main.c || cmake_object_order_depends_target_firmware
+  DEFINES = -DSTM32F103xB
+  DEP_FILE = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/main.c.obj.d
+  FLAGS = -g -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -ffunction-sections -fdata-sections -Wall -Wextra -Wno-unused-parameter
+  INCLUDES = -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Core/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/src"
+  OBJECT_DIR = CMakeFiles/firmware.dir
+  OBJECT_FILE_DIR = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src
+
+build CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/src/Lab1.c.obj: C_COMPILER__firmware_unscanned_Debug /Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI$ -$ Programmation$ 3$ -$ Microcontroleurs$ et$ peripheriques/Laboratoires/Lab1$ GPIO/src/Lab1.c || cmake_object_order_depends_target_firmware
+  DEFINES = -DSTM32F103xB
+  DEP_FILE = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/src/Lab1.c.obj.d
+  FLAGS = -g -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -ffunction-sections -fdata-sections -Wall -Wextra -Wno-unused-parameter
+  INCLUDES = -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Core/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/src"
+  OBJECT_DIR = CMakeFiles/firmware.dir
+  OBJECT_FILE_DIR = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/src
+
+build CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/src/lcd.c.obj: C_COMPILER__firmware_unscanned_Debug /Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI$ -$ Programmation$ 3$ -$ Microcontroleurs$ et$ peripheriques/Laboratoires/Lab1$ GPIO/src/lcd.c || cmake_object_order_depends_target_firmware
+  DEFINES = -DSTM32F103xB
+  DEP_FILE = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/src/lcd.c.obj.d
+  FLAGS = -g -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -ffunction-sections -fdata-sections -Wall -Wextra -Wno-unused-parameter
+  INCLUDES = -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Core/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/src"
+  OBJECT_DIR = CMakeFiles/firmware.dir
+  OBJECT_FILE_DIR = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/src
+
+build CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/src/main.c.obj: C_COMPILER__firmware_unscanned_Debug /Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI$ -$ Programmation$ 3$ -$ Microcontroleurs$ et$ peripheriques/Laboratoires/Lab1$ GPIO/src/main.c || cmake_object_order_depends_target_firmware
+  DEFINES = -DSTM32F103xB
+  DEP_FILE = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/src/main.c.obj.d
+  FLAGS = -g -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -ffunction-sections -fdata-sections -Wall -Wextra -Wno-unused-parameter
+  INCLUDES = -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Core/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/src"
+  OBJECT_DIR = CMakeFiles/firmware.dir
+  OBJECT_FILE_DIR = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/src
 
 build CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/startup_stm32f103xb.s.obj: ASM_COMPILER__firmware_unscanned_Debug /Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI$ -$ Programmation$ 3$ -$ Microcontroleurs$ et$ peripheriques/Laboratoires/Lab1$ GPIO/startup_stm32f103xb.s || cmake_object_order_depends_target_firmware
   DEFINES = -DSTM32F103xB
   DEP_FILE = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/startup_stm32f103xb.s.obj.d
   FLAGS = -g -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -ffunction-sections -fdata-sections -x assembler-with-cpp
-  INCLUDES = -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Core/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Inc"
+  INCLUDES = -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Core/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/src"
   OBJECT_DIR = CMakeFiles/firmware.dir
   OBJECT_FILE_DIR = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO
 
@@ -73,7 +113,7 @@ build CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026
 #############################################
 # Link the executable firmware.elf
 
-build firmware.elf: C_EXECUTABLE_LINKER__firmware_Debug CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/Lab1.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/startup_stm32f103xb.s.obj
+build firmware.elf: C_EXECUTABLE_LINKER__firmware_Debug CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/Lab1.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/lcd.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/main.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/src/Lab1.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/src/lcd.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/src/main.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/startup_stm32f103xb.s.obj
   FLAGS = -g
   LINK_FLAGS = -mcpu=cortex-m3 -mthumb -mfloat-abi=soft --specs=nano.specs --specs=nosys.specs "-T/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/stm32f103xb_flash.ld" "-Wl,-Map=/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/build/qc1/firmware.map,--cref" -Wl,--gc-sections -Wl,--start-group -lc -lm -Wl,--end-group
   OBJECT_DIR = CMakeFiles/firmware.dir

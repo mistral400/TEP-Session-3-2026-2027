@@ -3,12 +3,12 @@
 ## Programmation sur STM32F103
 
 **Nom :** Matisse Rhéaume-Viale  
-**Cours :** [Nom du cours]  
-**Enseignant :** [Nom de l'enseignant]  
-**Date :** [Date de remise]  
-**Groupe :** [Numéro du groupe]
+**Cours :** 243-356-LI - Programmation 3 - Microcontroleurs et peripheriques
+**Enseignant :** Gabriel Fortin-Bélanger
+**Date :** Mar 8 Septembre  
+**Groupe :** 0001
 
----
+
 
 # 1. Objectif du laboratoire
 
@@ -33,7 +33,7 @@ Les fonctions suivantes ont été développées :
 - `Systeme_Delai()`
 - `main()`
 
----
+
 
 # 2. Plan de test
 
@@ -46,7 +46,7 @@ Les fonctions suivantes ont été développées :
 | 3 | Changement de vitesse — 2e appui | Appuyer une deuxième fois sur S1-3 et mesurer la période du signal. | Période mesurée de 1 s. | 1250 ms |
 | 4 | Retour au cycle initial — 3e appui | Appuyer une troisième fois sur S1-3 et mesurer la période du signal. | Période mesurée de 300 ms. | 375 ms |
 
----
+
 
 ## 2.2 Cas de test 1 — Période initiale de 300 ms
 
@@ -63,7 +63,7 @@ Une période de 300 ms doit être mesurée sur le signal de la LED D1-1.
 **Observation :**  
 375 ms de délai donc delai un peu plus grand.
 
----
+
 
 ## 2.3 Cas de test 2 — Période de 500 ms
 
@@ -82,7 +82,7 @@ Après un premier appui sur S1-3, la période doit passer de 300 ms à 500 ms.
 **Observation :**  
 Le delai mesuré est different de celui demandé.
 
----
+
 
 ## 2.4 Cas de test 3 — Période de 1 s
 
@@ -101,7 +101,7 @@ Après un deuxième appui sur S1-3, la période doit passer de 500 ms à 1 s.
 **Observation :**  
 Le delai est de 1,25s
 
----
+
 
 ## 2.5 Cas de test 4 — Retour à 300 ms
 
@@ -120,7 +120,7 @@ Après un troisième appui sur S1-3, la période doit revenir à 300 ms.
 **Observation :**  
 un delai de 375 ms
 
----
+
 
 # 3. Questions d'analyse
 
@@ -131,7 +131,7 @@ Pour chacune des quatre fonctions demandées ainsi que pour `main()`, les sectio
 3. Une explication des registres utilisés.
 4. Une capture de la documentation technique officielle justifiant les configurations.
 
----
+
 
 # 3.1 Fonction `GPIO_InitPin()`
 
@@ -192,7 +192,7 @@ La broche est configurée en entrée flottante.
 **Explication de la documentation :**  
 La documentation y montre les champs CNF5, MODE5, CNF6, MODE6 et explique les valeurs possibles : entrée, sortie 10 MHz, 2 MHz, 50 MHz, push-pull, pull-up/pull-down, etc.
 
----
+
 
 # 3.2 Fonction `GPIO_WritePin()`
 
@@ -232,7 +232,7 @@ Dans ce laboratoire, PB6 commande la LED D1-1.
 **Explication de la documentation :**  
 La documentation montre que le registre BSRR permet de mettre une sortie à 1 et que le registre BRR permet de la mettre à 0.
 
----
+
 
 # 3.3 Fonction `GPIO_ReadPin()`
 
@@ -279,7 +279,7 @@ Dans le laboratoire, cette fonction sert à lire le bouton S1-3 sur PB5.
 **Explication de la documentation :**  
 La documentation montre que le registre IDR contient l'état logique des broches du port GPIO.
 
----
+
 
 # 3.4 Fonction `Systeme_Delai()`
 
@@ -333,7 +333,7 @@ Le délai est approximatif et dépend de l'horloge HSI de 8 MHz.
 La documentation indique que l'oscillateur interne HSI fonctionne à 8 MHz. Cette horloge influence la vitesse d'exécution des boucles utilisées pour créer le délai.
 
 
----
+
 
 # 3.5 Fonction `main()`
 

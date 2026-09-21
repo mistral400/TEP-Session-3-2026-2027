@@ -1,0 +1,62 @@
+# [Nom du cours] — Cours [XX]
+
+**Date :** AAAA-MM-JJ
+**Sujet :** Timer
+**Cours / module :** Prog 3
+**Professeur :** Gabriel Fortin Bélanger
+
+---
+
+## Objectifs du cours
+
+À la fin de ce cours, je dois être capable de :
+
+* Comprendre ...
+* Expliquer ...
+* Programmer ...
+* Utiliser ...
+
+---
+
+Notes
+[Concept / section]
+Void SysTick_Init() : chaque ms une interpptuion va dans le handler de cet fonction, le control du o
+{
+    SYSTICK_LOAD = | (SYSCLK_HZ /1000U0) - 1U;
+    SYSTICK_VAL = 0U;
+    SYSTICK_CTRL...
+}
+SYSTICK_BASE 0xE000E010U
+SYSTICK_CTRL 0xE000E010U
+SYSTICK_LOAD 0xE000E010U mais offset de 0x04
+SYSTICK_VAL 0xE000E010U mais offeset de 0x08
+Bon de 4 car dans notre arichieture chaque octet et une valeur d'adresse donc on fais des bon de 4 pour 32 bit
+
+Explication...
+
+// Exemple de code
+[Concept / section]
+Point important
+Point important
+Point important
+Exemple
+// Code vu en classe
+
+Explication :
+
+...
+...
+À retenir
+...
+...
+...
+Questions / choses à revoir
+
+...
+
+...
+
+
+
+
+///////////// note brut a transformer

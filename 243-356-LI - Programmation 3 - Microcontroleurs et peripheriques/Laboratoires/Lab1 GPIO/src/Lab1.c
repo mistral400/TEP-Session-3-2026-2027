@@ -1,170 +1,316 @@
 /**
  ******************************************************************************
  * @file    Lab1.c
- * @brief   Lab 1 - GPIO bare metal STM32F103
+ * @brief   Gestion GPIO bare-metal STM32F103
  ******************************************************************************
  */
 
-#define RCC_APB2ENR (*(volatile unsigned int *)0x40021018)
-
-#define GPIOB_CRL   (*(volatile unsigned int *)0x40010C00)
-#define GPIOB_CRH   (*(volatile unsigned int *)0x40010C04)
-#define GPIOB_IDR   (*(volatile unsigned int *)0x40010C08)
-#define GPIOB_ODR   (*(volatile unsigned int *)0x40010C0C)
-#define GPIOB_BSRR  (*(volatile unsigned int *)0x40010C10)
-#define GPIOB_BRR   (*(volatile unsigned int *)0x40010C14)
+#include "Lab1.h"
 
 
-/* ---------------------------------------------------------------------
- * Function : GPIO_InitPin
- * Author   : Matisse Rhéaume-Viale & PROG3
- * Desc     : Configure une broche de GPIOB en entrée ou en sortie.
- * Notes    : mode = 1 : sortie push-pull 2 MHz
- *            mode = 0 : entrée flottante
- * --------------------------------------------------------------------- */
-void GPIO_InitPin(unsigned char pin, unsigned char mode)
+/* ============================================================
+ * Adresses de base
+ * ============================================================ */
+
+#define RCC_BASE        0x40021000UL
+#define AFIO_BASE       0x40010000UL
+
+#define GPIOA_BASE      0x40010800UL
+#define GPIOB_BASE      0x40010C00UL
+
+
+/* ============================================================
+ * RCC
+ * ============================================================ */
+
+#define RCC_APB2ENR     (*(volatile uint32_t *)(RCC_BASE + 0x18UL))
+
+#define RCC_AFIOEN      (1UL << 0)
+#define RCC_IOPAEN      (1UL << 2)
+#define RCC_IOPBEN      (1UL << 3)
+
+
+/* ============================================================
+ * AFIO
+ * ============================================================ */
+
+#define AFIO_MAPR       (*(volatile uint32_t *)(AFIO_BASE + 0x04UL))
+
+/*
+ * SWJ_CFG = 010
+ *
+ * JTAG désactivé
+ * SWD conservé
+ *
+ * Libère notamment PB3 et PB4.
+ */
+#define AFIO_SWJ_MASK       (7UL << 24)
+#define AFIO_SWJ_SWD_ONLY   (2UL << 24)
+
+
+/* ============================================================
+ * Offsets GPIO STM32F1
+ * ============================================================ */
+
+#define GPIO_CRL_OFFSET     0x00UL
+#define GPIO_CRH_OFFSET     0x04UL
+#define GPIO_IDR_OFFSET     0x08UL
+#define GPIO_ODR_OFFSET     0x0CUL
+#define GPIO_BSRR_OFFSET    0x10UL
+#define GPIO_BRR_OFFSET     0x14UL
+
+
+/* ============================================================
+ * Fonctions internes
+ * ============================================================ */
+
+static uint32_t GPIO_GetBase(uint8_t port)
 {
-    unsigned int decalage;
-
-    RCC_APB2ENR |= (1u << 3);    // Active l'horloge de GPIOB
-
-    decalage = ((unsigned int)pin) * 4u;
-
-    // Efface les 4 bits de configuration de la broche
-    GPIOB_CRL &= ~(0xFu << decalage);
-
-    if (mode == 1u)
+    if (port == GPIO_PORT_A)
     {
-        // CNF = 00, MODE = 10
-        // Sortie push-pull, 2 MHz
-        GPIOB_CRL |= (0x2u << decalage);
+        return GPIOA_BASE;
+    }
+
+    if (port == GPIO_PORT_B)
+    {
+        return GPIOB_BASE;
+    }
+
+    return 0UL;
+}
+
+
+static void GPIO_EnableClock(uint8_t port)
+{
+    if (port == GPIO_PORT_A)
+    {
+        RCC_APB2ENR |= RCC_IOPAEN;
+    }
+    else if (port == GPIO_PORT_B)
+    {
+        RCC_APB2ENR |= RCC_IOPBEN;
+    }
+}
+
+
+/*
+ * Libère PB3 et PB4 du port JTAG.
+ *
+ * SWD reste fonctionnel :
+ * PA13 = SWDIO
+ * PA14 = SWCLK
+ */
+static void GPIO_DisableJTAG(void)
+{
+    RCC_APB2ENR |= RCC_AFIOEN;
+
+    AFIO_MAPR &= ~AFIO_SWJ_MASK;
+    AFIO_MAPR |= AFIO_SWJ_SWD_ONLY;
+}
+
+
+/* ============================================================
+ * GPIO_InitPin
+ * ============================================================ */
+
+void GPIO_InitPin(uint8_t port, uint8_t pin, uint8_t mode)
+{
+    uint32_t base;
+    volatile uint32_t *config_register;
+
+    uint32_t shift;
+
+
+    if (pin > 15U)
+    {
+        return;
+    }
+
+
+    base = GPIO_GetBase(port);
+
+    if (base == 0UL)
+    {
+        return;
+    }
+
+
+    GPIO_EnableClock(port);
+
+
+    /*
+     * Ton Port 2 utilise PB3 et PB4.
+     *
+     * JTAG doit donc être désactivé.
+     */
+    if ((port == GPIO_PORT_B) &&
+        ((pin == 3U) || (pin == 4U)))
+    {
+        GPIO_DisableJTAG();
+    }
+
+
+    /*
+     * Pins 0 à 7 :
+     * CRL
+     *
+     * Pins 8 à 15 :
+     * CRH
+     */
+    if (pin < 8U)
+    {
+        config_register =
+            (volatile uint32_t *)(base + GPIO_CRL_OFFSET);
+
+        shift = ((uint32_t)pin * 4UL);
     }
     else
     {
-        // CNF = 01, MODE = 00
-        // Entrée flottante
-        GPIOB_CRL |= (0x4u << decalage);
+        config_register =
+            (volatile uint32_t *)(base + GPIO_CRH_OFFSET);
+
+        shift = ((uint32_t)(pin - 8U) * 4UL);
     }
-}
 
 
-/* ---------------------------------------------------------------------
- * Function : GPIO_WritePin
- * Author   : Matisse Rhéaume-Viale & PROG3
- * Desc     : Écrit un état logique sur une broche de GPIOB.
- * Notes    : etat = 1 : niveau haut
- *            etat = 0 : niveau bas
- * --------------------------------------------------------------------- */
-void GPIO_WritePin(unsigned char pin, unsigned char etat)
-{
-    if (etat == 1u)
+    /*
+     * Efface les 4 bits associés à la pin.
+     */
+    *config_register &= ~(0xFUL << shift);
+
+
+    if (mode == GPIO_OUTPUT)
     {
-        GPIOB_BSRR = (1u << pin);
+        /*
+         * STM32F103 :
+         *
+         * CNF  = 00
+         * MODE = 10
+         *
+         * General purpose output
+         * Push-pull
+         * 2 MHz
+         *
+         * 0010 = 0x2
+         */
+        *config_register |= (0x2UL << shift);
     }
     else
     {
-        GPIOB_BRR = (1u << pin);
+        /*
+         * CNF  = 01
+         * MODE = 00
+         *
+         * Floating input
+         *
+         * 0100 = 0x4
+         */
+        *config_register |= (0x4UL << shift);
     }
 }
 
 
-/* ---------------------------------------------------------------------
- * Function : GPIO_ReadPin
- * Author   : Matisse Rhéaume-Viale & PROG3
- * Desc     : Lit l'état logique d'une broche de GPIOB.
- * Notes    : Retourne 0 ou 1.
- * --------------------------------------------------------------------- */
-unsigned char GPIO_ReadPin(unsigned char pin)
+/* ============================================================
+ * GPIO_WritePin
+ * ============================================================ */
+
+void GPIO_WritePin(uint8_t port, uint8_t pin, uint8_t state)
 {
-    if ((GPIOB_IDR & (1u << pin)) != 0u)
+    uint32_t base;
+
+    volatile uint32_t *bsrr;
+    volatile uint32_t *brr;
+
+
+    if (pin > 15U)
     {
-        return 1u;
+        return;
+    }
+
+
+    base = GPIO_GetBase(port);
+
+    if (base == 0UL)
+    {
+        return;
+    }
+
+
+    bsrr = (volatile uint32_t *)(base + GPIO_BSRR_OFFSET);
+    brr  = (volatile uint32_t *)(base + GPIO_BRR_OFFSET);
+
+
+    if (state != 0U)
+    {
+        /*
+         * Met la pin à HIGH.
+         */
+        *bsrr = (1UL << pin);
     }
     else
     {
-        return 0u;
+        /*
+         * Met la pin à LOW.
+         */
+        *brr = (1UL << pin);
     }
 }
 
 
-/* ---------------------------------------------------------------------
- * Function : Systeme_Delai
- * Author   : Matisse Rhéaume-Viale & PROG3
- * Desc     : Produit un délai logiciel approximatif en millisecondes.
- * Notes    : Boucle calibrée pour l'horloge HSI de 8 MHz.
- * --------------------------------------------------------------------- */
-void Systeme_Delai(unsigned int delai)
+/* ============================================================
+ * GPIO_ReadPin
+ * ============================================================ */
+
+uint8_t GPIO_ReadPin(uint8_t port, uint8_t pin)
 {
-    volatile unsigned int delaiOut = 0u;
-    volatile unsigned int delaiIn;
+    uint32_t base;
 
-    while (delaiOut < delai)
+    volatile uint32_t *idr;
+
+
+    if (pin > 15U)
     {
-        delaiOut++;
-
-        delaiIn = 0u;
-
-        while (delaiIn < 1000u)
-        {
-            delaiIn++;
-        }
+        return 0U;
     }
+
+
+    base = GPIO_GetBase(port);
+
+    if (base == 0UL)
+    {
+        return 0U;
+    }
+
+
+    idr = (volatile uint32_t *)(base + GPIO_IDR_OFFSET);
+
+
+    if ((*idr & (1UL << pin)) != 0UL)
+    {
+        return 1U;
+    }
+
+    return 0U;
 }
 
-int main(void)
+
+/* ============================================================
+ * Systeme_Delai
+ * ============================================================ */
+
+void Systeme_Delai(uint32_t delay_ms)
 {
-    unsigned int delai = 300u;
+    volatile uint32_t outer;
+    volatile uint32_t inner;
 
-    unsigned char boutonActuel;
-    unsigned char boutonPrecedent = 1u;
 
-    GPIO_InitPin(6u, 1u); // PB6 comme LED D1-1
-
-    GPIO_InitPin(7u, 0u); // PB7 comme bouton S1-3
-
-    GPIO_WritePin(6u, 1u); // LED d1-1 éteinte
-
-    while (1)
+    for (outer = 0U; outer < delay_ms; outer++)
     {
-        boutonActuel = GPIO_ReadPin(7u); // Lire l'état du bouton S1-3
-
-    /* ---------------------------------------------------------------------
-    * Function : Systeme_Delai
-    * Author   : Matisse Rhéaume-Viale & PROG3
-    * Desc     : Produit un délai logiciel approximatif en millisecondes.
-    * Notes    : Boucle calibrée pour l'horloge HSI de 8 MHz.
-    * --------------------------------------------------------------------- */
-        if ((boutonPrecedent == 1u) && (boutonActuel == 0u)) // Détection du front descendant
-{
-    Systeme_Delai(20u); // Délai anti-rebond de 20 ms
-
-    if (GPIO_ReadPin(7u) == 0u) // Vérifie que le bouton est toujours appuyé
-    {
-        if (delai == 300u) // 300 ms -> 500 ms
+        for (inner = 0U; inner < 1000U; inner++)
         {
-            delai = 500u;
-        }
-        else if (delai == 500u) // 500 ms -> 1000 ms
-        {
-            delai = 1000u;
-        }
-        else // 1000 ms -> 300 ms
-        {
-            delai = 300u;
+            /*
+             * Attente active volontaire.
+             */
         }
     }
 }
-
-        boutonPrecedent = boutonActuel;
-
-
-        GPIO_WritePin(6u, 0u); // Allumer D1-1
-
-        Systeme_Delai(delai); // Délai entre l'allumage et l'extinction de la LED
-
-        GPIO_WritePin(6u, 1u); // Éteindre D1-1
-
-        Systeme_Delai(delai); // Délai entre l'extinction et l'allumage de la LED
-    }
-}
-

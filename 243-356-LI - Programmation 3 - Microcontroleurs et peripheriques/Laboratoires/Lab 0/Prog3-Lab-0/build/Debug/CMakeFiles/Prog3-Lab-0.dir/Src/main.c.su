@@ -6,4 +6,4 @@
 /Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab 0/Prog3-Lab-0/Src/main.c:128:13:M400_vLEDToggle	16	static
 /Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab 0/Prog3-Lab-0/Src/main.c:139:13:M400_vLEDBlinkTask	24	static
 /Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab 0/Prog3-Lab-0/Src/main.c:163:13:SysTick_vInit	4	static
-/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab 0/Prog3-Lab-0/Src/main.c:171:13:CPU_vWaitForInterrupt	4	static,ignoring_inline_asm
+/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab 0/Prog3-Lab-0/Src/main.c:171:13:CPU_vWaitForInterrupt	4	static

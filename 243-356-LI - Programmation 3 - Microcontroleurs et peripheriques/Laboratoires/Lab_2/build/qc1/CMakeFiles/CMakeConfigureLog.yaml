@@ -1,0 +1,511 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:228 (message)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      The target system is: Generic -  - ARM
+      The host system is: Darwin - 27.0.0 - arm64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-gcc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/libc.a(libc_a-exit.o): in function `exit':
+      (.text.exit+0x28): undefined reference to `_exit'
+      /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/libc.a(libc_a-closer.o): in function `_close_r':
+      (.text._close_r+0x18): undefined reference to `_close'
+      /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/libc.a(libc_a-lseekr.o): in function `_lseek_r':
+      (.text._lseek_r+0x24): undefined reference to `_lseek'
+      /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/libc.a(libc_a-readr.o): in function `_read_r':
+      (.text._read_r+0x24): undefined reference to `_read'
+      /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/libc.a(libc_a-sbrkr.o): in function `_sbrk_r':
+      (.text._sbrk_r+0x18): undefined reference to `_sbrk'
+      /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/libc.a(libc_a-writer.o): in function `_write_r':
+      (.text._write_r+0x24): undefined reference to `_write'
+      collect2: error: ld returned 1 exit status
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-gcc 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+      
+      The C compiler identification is GNU, found in:
+        /Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_2/build/qc1/CMakeFiles/3.28.6/CompilerIdC/CMakeCCompilerId.o
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1155 (message)"
+      - "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeDetermineASMCompiler.cmake:131 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      arm-none-eabi-gcc (xPack GNU Arm Embedded GCC arm64) 15.2.1 20251203
+      Copyright (C) 2025 Free Software Foundation, Inc.
+      This is free software; see the source for copying conditions.  There is NO
+      warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:60 (try_compile)"
+      - "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_2/build/qc1/CMakeFiles/CMakeScratch/TryCompile-QSaqgw"
+      binary: "/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_2/build/qc1/CMakeFiles/CMakeScratch/TryCompile-QSaqgw"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_2/build/qc1/CMakeFiles/CMakeScratch/TryCompile-QSaqgw'
+        
+        Run Build Command(s): "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/ninja-build/bin/ninja" -v cmTC_21db6
+        [1/2] "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-gcc"   -v -o CMakeFiles/cmTC_21db6.dir/CMakeCCompilerABI.c.obj -c '/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeCCompilerABI.c'
+        Using built-in specs.
+        COLLECT_GCC=/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-gcc
+        Target: arm-none-eabi
+        Configured with: /Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/sources/gcc/configure --prefix=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/application --with-sysroot=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/application/arm-none-eabi --with-native-system-header-dir=/include --infodir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/info --mandir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/man --htmldir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/html --pdfdir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/pdf --build=aarch64-apple-darwin20.6.0 --host=aarch64-apple-darwin20.6.0 --target=arm-none-eabi --disable-nls --disable-shared --disable-threads --disable-tls --enable-checking=release --enable-languages=c,c++,fortran --with-gmp=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install --with-newlib --with-pkgversion='xPack GNU Arm Embedded GCC arm64' --with-gnu-as --with-gnu-ld --with-system-zlib --with-headers=yes --enable-multilib --with-multilib-list=aprofile,rmprofile
+        Thread model: single
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 15.2.1 20251203 (xPack GNU Arm Embedded GCC arm64) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_21db6.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_21db6.dir/'
+         /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../libexec/gcc/arm-none-eabi/15.2.1/cc1 -quiet -v -iprefix /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/ -isysroot /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi -D__USES_INITFINI__ /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_21db6.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -o /var/folders/t9/y_chwk8j4cv2jjx6x9_h4twc0000gn/T//ccIV7GOj.s
+        GNU C23 (xPack GNU Arm Embedded GCC arm64) version 15.2.1 20251203 (arm-none-eabi)
+        	compiled by GNU C version xPack arm64 Clang 20.1.8 (https://github.com/xpack-dev-tools/clang-xpack 7fcf465cd13025c6f55948e4021c0d460fa4879a), GMP version 6.2.1, MPFR version 3.1.6, MPC version 1.0.3, isl version isl-0.15-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/15.2.1/include"
+        ignoring nonexistent directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi/usr/local/include"
+        ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/15.2.1/include-fixed"
+        ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/include"
+        ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include
+         /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include-fixed
+         /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/include
+        End of search list.
+        Compiler executable checksum: e79ce487b22b90c9e3aa2f46241ae97a
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_21db6.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_21db6.dir/'
+         /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_21db6.dir/CMakeCCompilerABI.c.obj /var/folders/t9/y_chwk8j4cv2jjx6x9_h4twc0000gn/T//ccIV7GOj.s
+        GNU assembler version 2.45.1 (arm-none-eabi) using BFD version (xPack GNU Arm Embedded GCC arm64) 2.45.1.20251203
+        COMPILER_PATH=/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../libexec/gcc/arm-none-eabi/15.2.1/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../libexec/gcc/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/
+        LIBRARY_PATH=/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_21db6.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_21db6.dir/CMakeCCompilerABI.c.'
+        [2/2] : && "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/bin/cmake" -E rm -f libcmTC_21db6.a && "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-ar" qc libcmTC_21db6.a  CMakeFiles/cmTC_21db6.dir/CMakeCCompilerABI.c.obj && "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-ranlib" libcmTC_21db6.a && "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/bin/cmake" -E touch libcmTC_21db6.a && :
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:130 (message)"
+      - "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include]
+          add: [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include-fixed]
+          add: [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/include]
+        end of search list found
+        collapse include dir [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include] ==> [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/lib/gcc/arm-none-eabi/15.2.1/include]
+        collapse include dir [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include-fixed] ==> [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/lib/gcc/arm-none-eabi/15.2.1/include-fixed]
+        collapse include dir [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/include] ==> [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/arm-none-eabi/include]
+        implicit include dirs: [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/lib/gcc/arm-none-eabi/15.2.1/include;/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/lib/gcc/arm-none-eabi/15.2.1/include-fixed;/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/arm-none-eabi/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:162 (message)"
+      - "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(arm-none-eabi-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_2/build/qc1/CMakeFiles/CMakeScratch/TryCompile-QSaqgw']
+        ignore line: []
+        ignore line: [Run Build Command(s): "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/ninja-build/bin/ninja" -v cmTC_21db6]
+        ignore line: [[1/2] "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-gcc"   -v -o CMakeFiles/cmTC_21db6.dir/CMakeCCompilerABI.c.obj -c '/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeCCompilerABI.c']
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-gcc]
+        ignore line: [Target: arm-none-eabi]
+        ignore line: [Configured with: /Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/sources/gcc/configure --prefix=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/application --with-sysroot=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/application/arm-none-eabi --with-native-system-header-dir=/include --infodir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/info --mandir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/man --htmldir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/html --pdfdir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/pdf --build=aarch64-apple-darwin20.6.0 --host=aarch64-apple-darwin20.6.0 --target=arm-none-eabi --disable-nls --disable-shared --disable-threads --disable-tls --enable-checking=release --enable-languages=c,c++,fortran --with-gmp=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install --with-newlib --with-pkgversion='xPack GNU Arm Embedded GCC arm64' --with-gnu-as --with-gnu-ld --with-system-zlib --with-headers=yes --enable-multilib --with-multilib-list=aprofile,rmprofile]
+        ignore line: [Thread model: single]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 15.2.1 20251203 (xPack GNU Arm Embedded GCC arm64) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_21db6.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_21db6.dir/']
+        ignore line: [ /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../libexec/gcc/arm-none-eabi/15.2.1/cc1 -quiet -v -iprefix /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/ -isysroot /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi -D__USES_INITFINI__ /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_21db6.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -o /var/folders/t9/y_chwk8j4cv2jjx6x9_h4twc0000gn/T//ccIV7GOj.s]
+        ignore line: [GNU C23 (xPack GNU Arm Embedded GCC arm64) version 15.2.1 20251203 (arm-none-eabi)]
+        ignore line: [	compiled by GNU C version xPack arm64 Clang 20.1.8 (https://github.com/xpack-dev-tools/clang-xpack 7fcf465cd13025c6f55948e4021c0d460fa4879a)  GMP version 6.2.1  MPFR version 3.1.6  MPC version 1.0.3  isl version isl-0.15-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/15.2.1/include"]
+        ignore line: [ignoring nonexistent directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi/usr/local/include"]
+        ignore line: [ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/15.2.1/include-fixed"]
+        ignore line: [ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/include"]
+        ignore line: [ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include]
+        ignore line: [ /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include-fixed]
+        ignore line: [ /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: e79ce487b22b90c9e3aa2f46241ae97a]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_21db6.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_21db6.dir/']
+        ignore line: [ /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_21db6.dir/CMakeCCompilerABI.c.obj /var/folders/t9/y_chwk8j4cv2jjx6x9_h4twc0000gn/T//ccIV7GOj.s]
+        ignore line: [GNU assembler version 2.45.1 (arm-none-eabi) using BFD version (xPack GNU Arm Embedded GCC arm64) 2.45.1.20251203]
+        ignore line: [COMPILER_PATH=/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../libexec/gcc/arm-none-eabi/15.2.1/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../libexec/gcc/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/]
+        ignore line: [LIBRARY_PATH=/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_21db6.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_21db6.dir/CMakeCCompilerABI.c.']
+        ignore line: [[2/2] : && "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/bin/cmake" -E rm -f libcmTC_21db6.a && "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-ar" qc libcmTC_21db6.a  CMakeFiles/cmTC_21db6.dir/CMakeCCompilerABI.c.obj && "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-ranlib" libcmTC_21db6.a && "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/bin/cmake" -E touch libcmTC_21db6.a && :]
+        ignore line: []
+        ignore line: []
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineSystem.cmake:207 (message)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      The target system is: Generic -  - ARM
+      The host system is: Darwin - 27.0.0 - arm64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:468 (find_file)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:506 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/opt/homebrew/share/cmake/Modules/"
+    found: "/opt/homebrew/share/cmake/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/Users/matisserheaume-viale/.local/stm32cube/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/pkg/env/global/bin"
+        - "/Library/Apple/usr/bin"
+        - "/Library/TeX/texbin"
+        - "/opt/homebrew/bin"
+        - "/Users/matisserheaume-viale/.codex/tmp/arg0/codex-arg0viCYGy"
+        - "/opt/homebrew/opt/dosfstools/sbin"
+        - "/Users/matisserheaume-viale/Library/Python/3.9/bin"
+        - "/Users/matisserheaume-viale/.local/stm32cube/bin"
+        - "/Users/matisserheaume-viale/.lmstudio/bin"
+        - "/Users/matisserheaume-viale/.vscode/extensions/openai.chatgpt-26.5908.31748-darwin-arm64/bin/macos-aarch64"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-gcc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/libc.a(libc_a-exit.o): in function `exit':
+      (.text.exit+0x28): undefined reference to `_exit'
+      /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/libc.a(libc_a-closer.o): in function `_close_r':
+      (.text._close_r+0x18): undefined reference to `_close'
+      /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/libc.a(libc_a-lseekr.o): in function `_lseek_r':
+      (.text._lseek_r+0x24): undefined reference to `_lseek'
+      /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/libc.a(libc_a-readr.o): in function `_read_r':
+      (.text._read_r+0x24): undefined reference to `_read'
+      /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/libc.a(libc_a-sbrkr.o): in function `_sbrk_r':
+      (.text._sbrk_r+0x18): undefined reference to `_sbrk'
+      /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/ld: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/libc.a(libc_a-writer.o): in function `_write_r':
+      (.text._write_r+0x24): undefined reference to `_write'
+      collect2: error: ld returned 1 exit status
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:468 (find_file)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:506 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "FIRST"
+      SearchAppBundle: "FIRST"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/opt/homebrew/share/cmake/Modules/"
+    found: "/opt/homebrew/share/cmake/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      ENV{PATH}:
+        - "/Users/matisserheaume-viale/.local/stm32cube/bin"
+        - "/usr/local/bin"
+        - "/System/Cryptexes/App/usr/bin"
+        - "/usr/bin"
+        - "/bin"
+        - "/usr/sbin"
+        - "/sbin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin"
+        - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+        - "/pkg/env/global/bin"
+        - "/Library/Apple/usr/bin"
+        - "/Library/TeX/texbin"
+        - "/opt/homebrew/bin"
+        - "/Users/matisserheaume-viale/.codex/tmp/arg0/codex-arg0viCYGy"
+        - "/opt/homebrew/opt/dosfstools/sbin"
+        - "/Users/matisserheaume-viale/Library/Python/3.9/bin"
+        - "/Users/matisserheaume-viale/.local/stm32cube/bin"
+        - "/Users/matisserheaume-viale/.lmstudio/bin"
+        - "/Users/matisserheaume-viale/.vscode/extensions/openai.chatgpt-26.5908.31748-darwin-arm64/bin/macos-aarch64"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-gcc 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+      
+      The C compiler identification is GNU, found in:
+        /Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_2/build/qc1/CMakeFiles/4.3.2/CompilerIdC/CMakeCCompilerId.o
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1296 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineASMCompiler.cmake:170 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      arm-none-eabi-gcc (xPack GNU Arm Embedded GCC arm64) 15.2.1 20251203
+      Copyright (C) 2025 Free Software Foundation, Inc.
+      This is free software; see the source for copying conditions.  There is NO
+      warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_2/build/qc1/CMakeFiles/CMakeScratch/TryCompile-rIak5O"
+      binary: "/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_2/build/qc1/CMakeFiles/CMakeScratch/TryCompile-rIak5O"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-nostartfiles"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_2/build/qc1/CMakeFiles/CMakeScratch/TryCompile-rIak5O'
+        
+        Run Build Command(s): "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/ninja-build/bin/ninja" -v cmTC_04e03
+        [1/2] "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-gcc"   -v -o CMakeFiles/cmTC_04e03.dir/CMakeCCompilerABI.c.obj -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-gcc
+        Target: arm-none-eabi
+        Configured with: /Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/sources/gcc/configure --prefix=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/application --with-sysroot=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/application/arm-none-eabi --with-native-system-header-dir=/include --infodir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/info --mandir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/man --htmldir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/html --pdfdir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/pdf --build=aarch64-apple-darwin20.6.0 --host=aarch64-apple-darwin20.6.0 --target=arm-none-eabi --disable-nls --disable-shared --disable-threads --disable-tls --enable-checking=release --enable-languages=c,c++,fortran --with-gmp=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install --with-newlib --with-pkgversion='xPack GNU Arm Embedded GCC arm64' --with-gnu-as --with-gnu-ld --with-system-zlib --with-headers=yes --enable-multilib --with-multilib-list=aprofile,rmprofile
+        Thread model: single
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 15.2.1 20251203 (xPack GNU Arm Embedded GCC arm64) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_04e03.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_04e03.dir/'
+         /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../libexec/gcc/arm-none-eabi/15.2.1/cc1 -quiet -v -iprefix /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/ -isysroot /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi -D__USES_INITFINI__ /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_04e03.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -o /var/folders/t9/y_chwk8j4cv2jjx6x9_h4twc0000gn/T//ccR63Nes.s
+        GNU C23 (xPack GNU Arm Embedded GCC arm64) version 15.2.1 20251203 (arm-none-eabi)
+        	compiled by GNU C version xPack arm64 Clang 20.1.8 (https://github.com/xpack-dev-tools/clang-xpack 7fcf465cd13025c6f55948e4021c0d460fa4879a), GMP version 6.2.1, MPFR version 3.1.6, MPC version 1.0.3, isl version isl-0.15-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/15.2.1/include"
+        ignoring nonexistent directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi/usr/local/include"
+        ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/15.2.1/include-fixed"
+        ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/include"
+        ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include
+         /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include-fixed
+         /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/include
+        End of search list.
+        Compiler executable checksum: e79ce487b22b90c9e3aa2f46241ae97a
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_04e03.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_04e03.dir/'
+         /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_04e03.dir/CMakeCCompilerABI.c.obj /var/folders/t9/y_chwk8j4cv2jjx6x9_h4twc0000gn/T//ccR63Nes.s
+        GNU assembler version 2.45.1 (arm-none-eabi) using BFD version (xPack GNU Arm Embedded GCC arm64) 2.45.1.20251203
+        COMPILER_PATH=/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../libexec/gcc/arm-none-eabi/15.2.1/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../libexec/gcc/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/
+        LIBRARY_PATH=/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_04e03.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_04e03.dir/CMakeCCompilerABI.c.'
+        [2/2] : && /opt/homebrew/bin/cmake -E rm -f libcmTC_04e03.a && "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-ar" qc libcmTC_04e03.a  CMakeFiles/cmTC_04e03.dir/CMakeCCompilerABI.c.obj && "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-ranlib" libcmTC_04e03.a && /opt/homebrew/bin/cmake -E touch libcmTC_04e03.a && :
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:217 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include]
+          add: [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include-fixed]
+          add: [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/include]
+        end of search list found
+        collapse include dir [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include] ==> [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/lib/gcc/arm-none-eabi/15.2.1/include]
+        collapse include dir [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include-fixed] ==> [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/lib/gcc/arm-none-eabi/15.2.1/include-fixed]
+        collapse include dir [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/include] ==> [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/arm-none-eabi/include]
+        implicit include dirs: [/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/lib/gcc/arm-none-eabi/15.2.1/include;/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/lib/gcc/arm-none-eabi/15.2.1/include-fixed;/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/arm-none-eabi/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:253 (message)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
+        ignore line: [Change Dir: '/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_2/build/qc1/CMakeFiles/CMakeScratch/TryCompile-rIak5O']
+        ignore line: []
+        ignore line: [Run Build Command(s): "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/ninja-build/bin/ninja" -v cmTC_04e03]
+        ignore line: [[1/2] "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-gcc"   -v -o CMakeFiles/cmTC_04e03.dir/CMakeCCompilerABI.c.obj -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-gcc]
+        ignore line: [Target: arm-none-eabi]
+        ignore line: [Configured with: /Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/sources/gcc/configure --prefix=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/application --with-sysroot=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/application/arm-none-eabi --with-native-system-header-dir=/include --infodir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/info --mandir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/man --htmldir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/html --pdfdir=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install/share/pdf --build=aarch64-apple-darwin20.6.0 --host=aarch64-apple-darwin20.6.0 --target=arm-none-eabi --disable-nls --disable-shared --disable-threads --disable-tls --enable-checking=release --enable-languages=c,c++,fortran --with-gmp=/Users/ilg/actions-runners/xpack-dev-tools/_work/arm-none-eabi-gcc-xpack/arm-none-eabi-gcc-xpack/build-assets/build/darwin-arm64/aarch64-apple-darwin20.6.0/install --with-newlib --with-pkgversion='xPack GNU Arm Embedded GCC arm64' --with-gnu-as --with-gnu-ld --with-system-zlib --with-headers=yes --enable-multilib --with-multilib-list=aprofile,rmprofile]
+        ignore line: [Thread model: single]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 15.2.1 20251203 (xPack GNU Arm Embedded GCC arm64) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_04e03.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_04e03.dir/']
+        ignore line: [ /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../libexec/gcc/arm-none-eabi/15.2.1/cc1 -quiet -v -iprefix /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/ -isysroot /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi -D__USES_INITFINI__ /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_04e03.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -o /var/folders/t9/y_chwk8j4cv2jjx6x9_h4twc0000gn/T//ccR63Nes.s]
+        ignore line: [GNU C23 (xPack GNU Arm Embedded GCC arm64) version 15.2.1 20251203 (arm-none-eabi)]
+        ignore line: [	compiled by GNU C version xPack arm64 Clang 20.1.8 (https://github.com/xpack-dev-tools/clang-xpack 7fcf465cd13025c6f55948e4021c0d460fa4879a)  GMP version 6.2.1  MPFR version 3.1.6  MPC version 1.0.3  isl version isl-0.15-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/15.2.1/include"]
+        ignore line: [ignoring nonexistent directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi/usr/local/include"]
+        ignore line: [ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/15.2.1/include-fixed"]
+        ignore line: [ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/../../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/include"]
+        ignore line: [ignoring duplicate directory "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include]
+        ignore line: [ /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/include-fixed]
+        ignore line: [ /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/include]
+        ignore line: [End of search list.]
+        ignore line: [Compiler executable checksum: e79ce487b22b90c9e3aa2f46241ae97a]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_04e03.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_04e03.dir/']
+        ignore line: [ /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_04e03.dir/CMakeCCompilerABI.c.obj /var/folders/t9/y_chwk8j4cv2jjx6x9_h4twc0000gn/T//ccR63Nes.s]
+        ignore line: [GNU assembler version 2.45.1 (arm-none-eabi) using BFD version (xPack GNU Arm Embedded GCC arm64) 2.45.1.20251203]
+        ignore line: [COMPILER_PATH=/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../libexec/gcc/arm-none-eabi/15.2.1/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../libexec/gcc/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/bin/]
+        ignore line: [LIBRARY_PATH=/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/../../../../arm-none-eabi/lib/:/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../arm-none-eabi/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_04e03.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_04e03.dir/CMakeCCompilerABI.c.']
+        ignore line: [[2/2] : && /opt/homebrew/bin/cmake -E rm -f libcmTC_04e03.a && "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-ar" qc libcmTC_04e03.a  CMakeFiles/cmTC_04e03.dir/CMakeCCompilerABI.c.obj && "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-ranlib" libcmTC_04e03.a && /opt/homebrew/bin/cmake -E touch libcmTC_04e03.a && :]
+        ignore line: []
+        ignore line: []
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+...

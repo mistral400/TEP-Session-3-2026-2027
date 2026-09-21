@@ -1,14 +1,9 @@
 # ninja log v6
-0	42	1787665586423109123	/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab 0/Prog3-Lab-0/build/Debug/cmake_install.cmake	c33090d14a18f56e
-0	42	1787665586424049038	build.ninja	c33090d14a18f56e
-0	33	1787665435463465545	Prog3-Lab-0.elf	32a13573a199e644
-5	38	1787665390614360664	CMakeFiles/Prog3-Lab-0.dir/Src/main.c.obj	a74e1837af5b9b1e
-5	39	1787665390614229706	CMakeFiles/Prog3-Lab-0.dir/Src/sysmem.c.obj	b2aa69a5c50ac193
-5	46	1787665390613959415	CMakeFiles/Prog3-Lab-0.dir/Src/syscall.c.obj	c954740627465c5
+2	27	1789476141450398631	CMakeFiles/Prog3-Lab-0.dir/Src/startup_stm32f103xb.s.obj	93f015dcc7da5c59
+43	73	1789476141491232105	Prog3-Lab-0.elf	32a13573a199e644
 1	16	1787664371401185814	CMakeFiles/Prog3-Lab-0.dir/Src/startup_stm32f102xx.S.obj	ef84e20e22996691
-5	31	1787665390614482955	CMakeFiles/Prog3-Lab-0.dir/Src/startup_stm32f103xb.s.obj	93f015dcc7da5c59
-2	15	1787665608754318806	CMakeFiles/Prog3-Lab-0.dir/Src/startup_stm32f103xb.s.obj	366cc709e48ebabb
-1	24	1787665608754188598	CMakeFiles/Prog3-Lab-0.dir/Src/main.c.obj	4f69f3dbd076fd47
-1	25	1787665608754050640	CMakeFiles/Prog3-Lab-0.dir/Src/sysmem.c.obj	864d1d33f7ddfe17
-1	37	1787665608753757224	CMakeFiles/Prog3-Lab-0.dir/Src/syscall.c.obj	5e34ecf188e34c4b
-37	181	1787665608789756881	Prog3-Lab-0.elf	b46515aebf828cb3
+2	35	1789476141450156965	CMakeFiles/Prog3-Lab-0.dir/Src/main.c.obj	a74e1837af5b9b1e
+1	36	1789476141449984133	CMakeFiles/Prog3-Lab-0.dir/Src/sysmem.c.obj	b2aa69a5c50ac193
+0	42	1789476146498158555	build.ninja	c33090d14a18f56e
+1	43	1789476141449520634	CMakeFiles/Prog3-Lab-0.dir/Src/syscall.c.obj	c954740627465c5
+0	42	1787665586423109123	/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab 0/Prog3-Lab-0/build/Debug/cmake_install.cmake	c33090d14a18f56e

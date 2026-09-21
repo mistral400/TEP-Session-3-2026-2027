@@ -228,6 +228,9 @@ QC1_LINKER_SCRIPT:UNINITIALIZED=/Users/matisserheaume-viale/Code/TEP-Session-3-2
 QC1_PROJECT_ROOT:UNINITIALIZED=/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO
 
 //No help, variable specified on the command line.
+QC1_SOURCE_DIR:UNINITIALIZED=/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/src
+
+//No help, variable specified on the command line.
 QC1_STARTUP:UNINITIALIZED=/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/startup_stm32f103xb.s
 
 //Value Computed by CMake

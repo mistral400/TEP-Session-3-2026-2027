@@ -1,0 +1,3 @@
+/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_2/build/qc1/CMakeFiles/firmware.dir
+/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_2/build/qc1/CMakeFiles/edit_cache.dir
+/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_2/build/qc1/CMakeFiles/rebuild_cache.dir

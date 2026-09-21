@@ -1,4 +1,4 @@
-set(CMAKE_C_COMPILER "/opt/homebrew/bin/arm-none-eabi-gcc")
+set(CMAKE_C_COMPILER "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-gcc")
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "GNU")
 set(CMAKE_C_COMPILER_VERSION "15.2.1")
@@ -21,11 +21,11 @@ set(CMAKE_C_SIMULATE_VERSION "")
 
 
 
-set(CMAKE_AR "/opt/homebrew/bin/arm-none-eabi-ar")
-set(CMAKE_C_COMPILER_AR "/opt/homebrew/bin/arm-none-eabi-gcc-ar")
-set(CMAKE_RANLIB "/opt/homebrew/bin/arm-none-eabi-ranlib")
-set(CMAKE_C_COMPILER_RANLIB "/opt/homebrew/bin/arm-none-eabi-gcc-ranlib")
-set(CMAKE_LINKER "/opt/homebrew/bin/arm-none-eabi-ld")
+set(CMAKE_AR "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-ar")
+set(CMAKE_C_COMPILER_AR "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-gcc-ar")
+set(CMAKE_RANLIB "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-ranlib")
+set(CMAKE_C_COMPILER_RANLIB "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-gcc-ranlib")
+set(CMAKE_LINKER "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/arm-none-eabi-ld")
 set(CMAKE_MT "")
 set(CMAKE_TAPI "CMAKE_TAPI-NOTFOUND")
 set(CMAKE_COMPILER_IS_GNUCC 1)

@@ -1,7 +1,16 @@
 # ninja log v6
-18	113	1788271010151806148	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/Lab1.c.obj	dbe078ae4da964f3
-0	11	1788357883941667969	/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/build/qc1/CMakeFiles/cmake.verify_globs	22da03bc321c68ef
-18	54	1788270030308985877	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/GPIO_WritePin().c.obj	ef9ba1edff700c42
-113	170	1788271010247052071	firmware.elf	a3a050526d9c04f3
 19	91	1788270804651524667	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/startup_stm32f103xb.s.obj	6ad4a9e6db6f06a4
-0	11	1788357907115368520	/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/build/qc1/CMakeFiles/cmake.verify_globs	22da03bc321c68ef
+91	146	1789135406892966177	firmware.elf	7e9e9c24bae4777a
+14	91	1789135406816596637	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/Lab1.c.obj	dbe078ae4da964f3
+18	54	1788270030308985877	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/GPIO_WritePin().c.obj	ef9ba1edff700c42
+0	13	1789135535443176395	/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/build/qc1/CMakeFiles/cmake.verify_globs	22da03bc321c68ef
+15	129	1789134451619444902	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/lcd.c.obj	131f8d53be38cbac
+15	91	1789135406816852052	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/main.c.obj	b16b776cb46fd531
+1	14	1789476076317870608	/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab1 GPIO/build/qc1/CMakeFiles/cmake.verify_globs	22da03bc321c68ef
+16	109	1789476076333175302	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/startup_stm32f103xb.s.obj	19291216cae7fee1
+16	119	1789476076332514679	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/main.c.obj	70eaa168f4e63c4e
+16	119	1789476076332920386	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/src/main.c.obj	cca8bc63b1488edf
+15	120	1789476076332158889	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/Lab1.c.obj	9599555fdfff4293
+16	120	1789476076332639221	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/src/Lab1.c.obj	d87f592fa7dbdb3a
+16	128	1789476076332771012	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/src/lcd.c.obj	11e3475549762ea4
+16	128	1789476076332390430	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab1_GPIO/Src/lcd.c.obj	fdad59d6bbead604
