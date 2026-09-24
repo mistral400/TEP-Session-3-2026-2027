@@ -6,7 +6,7 @@
 #define TIMER2_MODE_INTERRUPT 2u
 
 #ifndef PWM_DUTY_PERCENT
-#define PWM_DUTY_PERCENT 50u // de 0 à 100
+#define PWM_DUTY_PERCENT 69u // de 0 à 100
 #endif
 #if PWM_DUTY_PERCENT > 100u
 #error "Le duty cycle doit etre compris entre 0 et 100"
