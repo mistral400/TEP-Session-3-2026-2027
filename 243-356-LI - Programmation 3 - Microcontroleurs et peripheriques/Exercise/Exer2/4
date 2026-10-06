@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <stdint.h>
+
+#define NB_CAPTEURS 4 
+
+typedef enum {
+    CAPTEUR_INACTIF = 0,
+    CAPTEUR_ACTIF   = 1
+} EtatCapteur_t;
+
+typedef struct {
+    uint8_t id;
+    uint8_t pin;
+    float temperature;
+    EtatCapteur_t etat;
+} Capteur_t;
+
+const char *nom_etat(EtatCapteur_t e) {
+    switch (e) {
+        case CAPTEUR_ACTIF:   return "Actif";
+        case CAPTEUR_INACTIF: return "Inactif";
+        default:              return "Inconnu";
+    }
+}
+
+int main(void) {
+    
+    Capteur_t capteurSalon = {
+        .id = 3,
+        .pin = 5,
+        .temperature = 21.5f,
+        .etat = CAPTEUR_ACTIF
+    };
+
+   
+    Capteur_t capteurs[NB_CAPTEURS];
+
+    for (uint8_t i = 0; i < NB_CAPTEURS; i++) {
+        capteurs[i].id = i;
+        capteurs[i].pin = 0;
+        capteurs[i].temperature = 0.0f;
+        capteurs[i].etat = CAPTEUR_INACTIF;
+    }
+
+    printf("capteurSalon -> ID: %u, pin: %u, Temp: %.1f C, Etat: %s (%d)\n",
+           capteurSalon.id, 
+           capteurSalon.pin, 
+           capteurSalon.temperature, 
+           nom_etat(capteurSalon.etat),
+           capteurSalon.etat);
+
+    printf("capteurs[0]  -> ID: %u, pin: %u, Temp: %.1f C, Etat: %s (%d)\n",
+           capteurs[0].id, 
+           capteurs[0].pin, 
+           capteurs[0].temperature, 
+           nom_etat(capteurs[0].etat),
+           capteurs[0].etat);
+
+    return 0;
+}

@@ -104,6 +104,6 @@ int main(void)
             }
         }
 
-        __asm volatile ("dsb\n\twfi" ::: "memory"); // attend prochaine interruption
+        __asm volatile ("dsb\n\twfi" ::: "memory"); // attend prochaine interruption donner par 
     }
 }

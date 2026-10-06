@@ -9,7 +9,7 @@
 #define PWM_DUTY_PERCENT 69u // de 0 à 100
 #endif
 #if PWM_DUTY_PERCENT > 100u
-#error "Le duty cycle doit etre compris entre 0 et 100"
+#error "Le duty cycle doit et   re compris entre 0 et 100"
 #endif
 
 void Timer2_Stop(void);
