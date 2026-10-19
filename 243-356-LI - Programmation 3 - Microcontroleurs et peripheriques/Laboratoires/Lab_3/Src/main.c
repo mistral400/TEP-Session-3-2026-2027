@@ -44,7 +44,9 @@ int main(void)
             LCD_Affichage_Temps();
         }
 
-        /* TIM2 envoie SEV à chaque seconde et réveille cette attente. */
-        __asm volatile ("wfe" ::: "memory");
+        /* Attend en C la prochaine mise à jour de TIM2. */
+        while (Timer2_GetUpdateCount() == dernierAffichage)
+        {
+        }
     }
 }

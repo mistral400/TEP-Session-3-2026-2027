@@ -1,4 +1,4 @@
-# Install script for directory: /Users/matisserheaume-viale/.vscode/extensions/mistral400.qc1-stm32-tools-0.3.1/resources/cmake
+# Install script for directory: /Users/matisserheaume-viale/.vscode/extensions/mistral400.qc1-stm32-tools-0.4.0/resources/cmake
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_2/build/qc1/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_3/build/qc1/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

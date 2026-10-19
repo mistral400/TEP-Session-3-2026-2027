@@ -1,3 +1,8 @@
 {
-    "qc1.projectPath": "/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_2"
+    "qc1.projectPath": "/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_3",
+    "qc1.cmakePath": "",
+    "qc1.compilerPath": "",
+    "qc1.openocdPath": "/opt/homebrew/bin/openocd",
+    "qc1.stlinkPath": "/opt/homebrew/bin/st-info",
+    "qc1.serialPort": "/dev/cu.usbserial-D30J6XG7"
 }
