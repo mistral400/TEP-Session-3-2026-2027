@@ -1,5 +1,6 @@
+
 ---
-title: "Laboratoire 3 — Affichage de l’heure sur LCD avec TIM2"
+title: "Laboratoire 3 - Affichage de l’heure sur LCD avec TIM2"
 author: "Matisse Rhéaume-Viale"
 date: "6 octobre 2026"
 lang: fr-CA
@@ -9,21 +10,61 @@ header-includes:
   - \usepackage{graphicx}
 ---
 
-**Cours :** 243-356-LI — Programmation 3 — Microcontrôleurs et périphériques  
-**Enseignant :** Gabriel Fortin-Bélanger  
-**Groupe :** 0001
+\thispagestyle{empty}
+
+\vspace{0.8cm}
+
+\begin{center}
+\includegraphics[width=0.45\textwidth]{images/CL_Cegep_horizontal_rouge_RVB.png}
+
+\vspace{1.2cm}
+
+{\large Techniques de génie électronique programmable}
+\end{center}
+
+\vspace{2cm}
+
+\begin{center}
+\begin{minipage}{0.82\textwidth}
+\textbf{Cours :} 243-356-LI - Programmation 3 - Microcontrôleurs et périphériques
+
+\textbf{Enseignant :} Gabriel Fortin-Bélanger
+
+\textbf{Groupe :} 0001
+\end{minipage}
+\end{center}
+
+\newpage
+\setcounter{page}{1}
+
+# 0. Introduction
+
+Dans ce laboratoire, j'utilise un STM32F103 pour afficher l'heure sur un écran LCD 20 × 4 au format `HH:MM:SS`. Le programme utilise TIM2 pour générer une interruption chaque seconde et faire avancer l'heure automatiquement.
+
+L'écran LCD communique avec le STM32 en mode 4 bits à l'aide des broches PB9 à PB15. Le programme utilise directement les registres du microcontrôleur, sans bibliothèque HAL. SysTick est aussi utilisé pour gérer les délais nécessaires aux commandes du LCD.
+
+Le fonctionnement est assez simple : TIM2 met à jour l'heure chaque seconde, puis la boucle principale détecte le changement et actualise l'affichage.
+
+## 0.1 Schéma fonctionnel
+
+Le schéma suivant représente le fonctionnement général du programme et les échanges entre les différentes parties.
+
+\begin{center}
+\includegraphics[width=0.85\textwidth]{images/sch_lab3fonctionnel.png}
+
+{\small\textit{Figure 1 - Schéma fonctionnel du laboratoire 3.}}
+\end{center}
 
 \newpage
 
 # 1. Objectif
+
 
 Le but est d’afficher l’heure au format `HH:MM:SS` sur l’écran LCD. Le Timer 2 déclenche une interruption chaque seconde. L’interruption avance l’heure et la boucle principale met l’écran à jour.
 
 Le programme utilise les registres du STM32F103 directement. Il n’utilise pas HAL. L’écran est piloté en mode 4 bits avec les broches `DB4` à `DB7`.
 
 # 2. Branchement de l’écran
-
-Le plan du laboratoire omet la broche `E` (Enable). Le pilote LCD utilisé au Lab 1 confirme que `E` est reliée à PB11. Il faut donc aussi brancher cette broche.
 
 | Signal LCD | Broche STM32F103 | Rôle |
 |---|---:|---|
@@ -38,46 +79,82 @@ Le plan du laboratoire omet la broche `E` (Enable). Le pilote LCD utilisé au La
 \begin{center}
 \includegraphics[width=0.75\textwidth]{images/doc_tc2004a_pins.png}
 
-{\small\textit{Figure 1 — Brochage du module TC2004A. Tinsharp, p. 5.}}
+{\small\textit{Figure 2 - Brochage du module TC2004A. Tinsharp, p. 5.}}
 \end{center}
 
 Le code écrit seulement dans l’écran. Il garde donc `R/W` à 0. La fonction `LCD_Commande()` ne fait rien si `RW` vaut `true`, car son prototype ne permet pas de retourner la valeur lue et les lignes de données sont configurées en sorties.
 
-**À confirmer avant le branchement :** la fiche du module TC2004A indique une alimentation logique de 5 V et un niveau haut minimal qui dépend de cette alimentation. Il faut vérifier la fiche du module exact et la compatibilité entre ses entrées et les sorties 3,3 V du STM32. Le câblage électrique n’a pas été vérifié sur la carte pendant ce travail.
 
 \newpage
 
 # 3. Fonctionnement du programme
 
-Au démarrage, `SystemInit()` sélectionne le HSI à 8 MHz et laisse les préscalers AHB et APB à 1. `LCD_Init()` configure les broches et démarre l’écran en mode 4 bits. Le programme affiche ensuite `00:00:00`, puis démarre TIM2.
+Au démarrage, `SystemInit()` sélectionne le HSI à 8 MHz et laisse les préscalers AHB et APB à 1. `LCD_Init()` configure les broches et démarre l’écran en mode 4 bits. Dans `main()`, j’initialise ensuite l’heure à `23:59:55` avec `Timer2_SetTime()`, je l’affiche, puis je démarre TIM2. Cette valeur sert à préparer le passage à minuit.
 
-TIM2 compte une seconde par période. Son interruption met à jour le nombre de secondes depuis minuit et envoie l’événement `SEV`. La boucle principale attend avec `WFE`. Au réveil, elle vérifie si le compteur de mise à jour a changé, puis rafraîchit l’écran. Les écritures LCD restent donc dans le programme principal et ne ralentissent pas l’interruption.
+TIM2 compte une seconde par période. Son interruption met à jour le nombre de secondes depuis minuit, augmente le compteur de mises à jour et envoie l’événement `SEV`. Cet événement ne sert pas à réveiller `main()`, car cette fonction ne contient pas de `WFE`. Elle ne contient pas non plus de boucle d’attente en C. Elle relit le compteur de mises à jour en continu et rafraîchit l’écran quand celui-ci change. Les écritures LCD restent dans le programme principal et ne sont pas faites dans l’interruption.
 
 Le temps est gardé sous forme d’un nombre de secondes entre 0 et 86 399. Après `23:59:59`, il revient à zéro. Cette représentation rend le passage à la minute et à minuit simple à gérer.
 
+Le fichier `gpio.c` contient aussi les fonctions pour la LED et le bouton, mais `main()` ne les appelle pas. `LED_Init()` configure PB6 en sortie push-pull à 2 MHz. `LED_Set()` commande la LED en actif bas. `Button_Init()` configure PB5 en entrée flottante et `Button_Read()` retourne 1 lorsque PB5 est bas. Les options de polarité et de pull interne qui étaient dans `gpio.h` ont été retirées; ces réglages sont maintenant écrits directement dans le code.
+
+Le fichier `SysTick.c` contient une base de temps de 1 ms, mais `main()` n’appelle pas `SysTick_Init()`. `LCD_Init()` configure plutôt SysTick comme compteur libre pour les délais du LCD.
+
 # 4. Plan de test
 
-Les essais ci-dessous viennent des consignes du Lab 3. Aucun résultat Saleae n’est présenté comme mesuré : les essais sur carte et les captures de l’analyseur logique restent à faire.
+J’ai vérifié les trois cas avec l’analyseur logique Saleae Logic 2 et le décodeur HD44780. Les captures montrent les signaux envoyés sur le bus LCD. Elles ne confirment pas à elles seules que l’écran affiche visuellement les caractères.
 
 | Cas | Vérification | Résultat attendu | Résultat obtenu |
 |---|---|---|---|
-| 1 | Capturer une commande LCD avec l’analyseur logique | Pour `0x28`, `RS=0`, `R/W=0`, puis les nibbles `0010` et `1000`, chacun validé par une impulsion sur `E`. | **NON TESTÉ** — capture matérielle absente. |
-| 2 | Mesurer la précision de l’affichage des secondes | Le début de chaque rafraîchissement de l’heure est espacé d’environ 1 s. Noter les périodes minimale, moyenne et maximale mesurées. | **NON TESTÉ** — capture matérielle absente. |
-| 3 | Vérifier le retour à zéro | En partant de `23:59:55`, l’écran doit afficher `00:00:00` après cinq interruptions d’une seconde. | **NON TESTÉ** — capture matérielle absente. |
+| 1 | Capturer une commande LCD avec l’analyseur logique | Pour `0x28`, `RS=0`, `R/W=0`, puis les nibbles `0010` et `1000`, chacun validé par une impulsion sur `E`. | Réussi : `0x28` reconnu par le décodeur HD44780. |
+| 2 | Mesurer la période entre les rafraîchissements | Les commandes de début de rafraîchissement sont espacées d’environ 1 s. | 11 intervalles : minimum de 998,538 ms, moyenne de 998,802 ms et maximum de 1 001,097 ms. |
+| 3 | Vérifier le retour à zéro | En partant de `23:59:55`, l’heure revient à `00:00:00` après cinq interruptions d’une seconde. | Passage de `23:59:59` à `00:00:00` observé; intervalle mesuré de 998,538 ms. |
 
-## 4.1 Procédures proposées
 
-**Cas 1 — Transmission d’une commande.** Brancher les voies de l’analyseur sur `RS`, `R/W`, `E` et `DB4` à `DB7`, puis redémarrer la carte. Capturer l’initialisation et repérer la commande `0x28`. Vérifier `RS=0`, `R/W=0`, les deux nibbles dans le bon ordre et une impulsion `E` par nibble.
+\newpage
+## 4.1 Résultats détaillés des cas de test
 
-**Cas 2 — Intervalle des secondes.** Capturer plusieurs rafraîchissements consécutifs sur `E`. Pour chaque rafraîchissement de l’heure, noter l’instant du premier front montant de `E`. Calculer les intervalles entre ces instants et rapporter le minimum, la moyenne et le maximum. La valeur attendue est proche de 1 s; la précision réelle dépend notamment de l’horloge de la carte.
+**Cas 1 - Transmission d’une commande.** J’ai utilisé Saleae Logic 2 avec le décodeur HD44780 pour vérifier les commandes envoyées au LCD.
 
-**Cas 3 — Passage de minuit.** Pour cet essai seulement, remplacer l’initialisation à zéro dans `main()` par :
+La capture montre la commande `0x28`, qui configure l’écran en mode 4 bits, avec deux lignes logiques et des caractères de 5 × 8 points. Les signaux `RS` et `R/W` sont à 0, ce qui indique une commande envoyée en écriture. Deux impulsions sur `E` transmettent les deux nibbles. Le décodeur reconnaît `0x28`; le test est réussi.
 
-```c
-(void)Timer2_SetTime(23U, 59U, 55U);
-```
+\begin{center}
+\includegraphics[width=0.90\textwidth]{images/test_C1salae.png}
 
-Après la compilation et le redémarrage, vérifier la suite `23:59:55`, `23:59:56`, `23:59:57`, `23:59:58`, `23:59:59`, puis `00:00:00`. Remettre ensuite l’initialisation normale à zéro. Cette procédure n’a pas été exécutée sur le matériel.
+{\small\textit{Figure 3 - Capture de Saleae Logic 2 montrant la commande 0x28 décodée par le décodeur HD44780.}}
+\end{center}
+
+\newpage
+**Cas 2 - Intervalle entre les rafraîchissements.** J’ai comparé les horodatages des commandes `0x80`, qui placent le curseur au début de la première ligne avant l’écriture de l’heure.
+
+Sur les 11 intervalles mesurés, la moyenne est de 998,802 ms. Le minimum est de 998,538 ms et le maximum de 1 001,097 ms. La période théorique est de 1 000 ms. L’écart moyen est donc de -1,198 ms, soit environ -0,120 %. La capture montre des mises à jour environ chaque seconde, mais elle ne permet pas de confirmer la cause exacte de l’écart.
+
+\begin{center}
+\includegraphics[width=0.95\textwidth]{images/test_c2salae.png}
+
+{\small\textit{Figure 4 - Capture de Saleae Logic 2 utilisée pour mesurer les intervalles entre les rafraîchissements.}}
+\end{center}
+
+\newpage
+
+\begin{center}
+\includegraphics[width=0.85\textwidth]{images/test_C2inter_tab.png}
+
+{\small\textit{Figure 5 - Graphique des 11 intervalles mesurés entre les commandes de rafraîchissement.}}
+\end{center}
+
+**Cas 3 - Passage de minuit.** Pour ce test, le programme part de `23:59:55`. Dans l’enregistrement Saleae, j’ai observé les commandes correspondant à `23:59:59`, puis à `00:00:00`. Le dernier rafraîchissement de `23:59:59` commence à 4,831322 s et celui de `00:00:00` à 5,829860 s. L’intervalle mesuré est de 998,538 ms. Le passage à minuit est confirmé sur les signaux capturés.
+
+\begin{center}
+\includegraphics[width=0.95\textwidth]{images/test_C3_minuit.png}
+
+{\small\textit{Figure 6 - Résumé du passage de \texttt{23:59:59} à \texttt{00:00:00} observé au cas 3.}}
+\end{center}
+
+\begin{center}
+\includegraphics[width=0.95\textwidth]{images/test_c2salae.png}
+
+{\small\textit{Figure 7 - Capture de Saleae Logic 2 utilisée pour mesurer les intervalles entre les rafraîchissements.}}
+\end{center}
 
 \newpage
 
@@ -98,24 +175,29 @@ void LCD_Init(void)
     SYST_CVR = 0UL;
     SYST_CSR = SYST_CLKSOURCE | SYST_ENABLE;
 
-    LCD_Delai_Ms(50UL);
+    LCD_Delai_Ms(LCD_STARTUP_DELAY_MS); // laisse le temps au LCD de démarrer
 
-    LCD_Envoyer_Nibble(0x03U);
-    LCD_Delai_Us(4500UL);
-    LCD_Envoyer_Nibble(0x03U);
-    LCD_Delai_Ms(1UL);
-    LCD_Envoyer_Nibble(0x03U);
-    LCD_Delai_Us(150UL);
-    LCD_Envoyer_Nibble(0x02U);
-    LCD_Delai_Us(150UL);
+    /* Séquence spéciale: au démarrage, le contrôleur attend encore 8 bits. */
+    LCD_Envoyer_Nibble(LCD_INIT_8BIT);
+    LCD_Delai_Us(LCD_INIT_DELAY1_US);
 
-    LCD_Commande(false, false, LCD_CMD_FUNCTION_SET);
+    LCD_Envoyer_Nibble(LCD_INIT_8BIT);
+    LCD_Delai_Ms(LCD_INIT_DELAY_MS);
+
+    LCD_Envoyer_Nibble(LCD_INIT_8BIT);
+    LCD_Delai_Us(LCD_INIT_DELAY2_US);
+
+    LCD_Envoyer_Nibble(LCD_INIT_4BIT); // passe en mode 4 bits
+    LCD_Delai_Us(LCD_INIT_DELAY2_US);
+
+    LCD_Commande(false, false, LCD_CMD_FUNCTION_SET); // 4 bits, 2 lignes, 5x8
     LCD_Commande(false, false, LCD_CMD_DISPLAY_OFF);
     LCD_Commande(false, false, LCD_CMD_CLEAR);
     LCD_Commande(false, false, LCD_CMD_ENTRY_MODE);
     LCD_Commande(false, false, LCD_CMD_DISPLAY_ON);
 }
 ```
+\newpage
 
 ### Explication
 
@@ -132,38 +214,38 @@ Après 50 ms, le code envoie les nibbles `0011`, `0011`, `0011`, puis `0010`. Ce
 | `SysTick_RVR` | `0xE000E014` | Fixe le rechargement à la valeur maximale de 24 bits. |
 | `SysTick_CVR` | `0xE000E018` | Fournit la valeur descendante utilisée pour calculer les délais. |
 
-Les extraits du manuel STM32 ci-dessous montrent le bit d’activation de GPIOB, la configuration de `GPIOx_CRH` et le registre de sortie `GPIOx_BSRR`.
+Les extraits du manuel STM32 montrent le bit d’activation de GPIOB, la configuration de `GPIOx_CRH` et le registre de sortie `GPIOx_BSRR`.
 
 \begin{center}
 \includegraphics[width=0.68\textwidth]{images/doc_rm0008_rcc_iopben.png}
 
-{\small\textit{Figure 2 — Registre de configuration et activation de GPIOB. ST RM0008, p. 113.}}
+{\small\textit{Figure 8 - Registre de configuration et activation de GPIOB. ST RM0008, p. 113.}}
 \end{center}
 
 \begin{center}
 \includegraphics[width=0.65\textwidth]{images/doc_rm0008_gpio_crh.png}
 
-{\small\textit{Figure 3 — Configuration des broches PB8 à PB15. ST RM0008, p. 172.}}
+{\small\textit{Figure 9 - Configuration des broches PB8 à PB15. ST RM0008, p. 172.}}
 \end{center}
 
 \begin{center}
 \includegraphics[width=0.65\textwidth]{images/doc_rm0008_gpio_bsrr.png}
 
-{\small\textit{Figure 4 — Registre de mise à 1 et de remise à 0. ST RM0008, p. 173.}}
+{\small\textit{Figure 10 - Registre de mise à 1 et de remise à 0. ST RM0008, p. 173.}}
 \end{center}
 
-La fiche HD44780U montre le transfert en deux nibbles ainsi que les délais d’initialisation. Le schéma de séquence ci-dessous vient de la documentation du cours utilisée au Lab 1.
+La documentation du HD44780U montre le transfert en deux nibbles ainsi que les délais d’initialisation. Le schéma de séquence ci-dessous vient de la documentation du cours utilisée au Lab 1.
 
 \begin{center}
 \includegraphics[width=0.48\textwidth]{images/doc_hd44780_init_sequence.png}
 
-{\small\textit{Figure 5 — Séquence de démarrage en mode 4 bits. Documentation du cours, Lab 1.}}
+{\small\textit{Figure 11 - Séquence de démarrage en mode 4 bits. Documentation du cours, Lab 1.}}
 \end{center}
 
 \begin{center}
 \includegraphics[width=0.62\textwidth]{images/doc_hd44780_4bit.png}
 
-{\small\textit{Figure 6 — Transfert et timing de l’interface 4 bits. Hitachi HD44780U, p. 22.}}
+{\small\textit{Figure 12 - Transfert et timing de l’interface 4 bits. Hitachi HD44780U, p. 22.}}
 \end{center}
 
 \newpage
@@ -175,24 +257,25 @@ La fiche HD44780U montre le transfert en deux nibbles ainsi que les délais d’
 ```c
 void LCD_Commande(bool RW, bool RS, uint8_t Data)
 {
+    /* L'interface demandée envoie des octets; la lecture n'a pas de retour. */
     if (RW)
     {
         return;
     }
 
     LCD_SetPin(LCD_RS_PIN, RS);
-    LCD_SetPin(LCD_RW_PIN, false);
+    LCD_SetPin(LCD_RW_PIN, false); // mode écriture
 
-    LCD_Envoyer_Nibble((uint8_t)(Data >> 4U));
-    LCD_Envoyer_Nibble((uint8_t)(Data & LCD_DATA_MASK));
+    LCD_Envoyer_Nibble((uint8_t)(Data >> LCD_HIGH_NIBBLE_SHIFT)); // nibble haut en premier
+    LCD_Envoyer_Nibble((uint8_t)(Data & LCD_DATA_MASK)); // puis nibble bas
 
     if ((!RS) && ((Data == LCD_CMD_CLEAR) || (Data == LCD_CMD_HOME)))
     {
-        LCD_Delai_Ms(2UL);
+        LCD_Delai_Ms(LCD_CLEAR_DELAY_MS); // ces deux commandes demandent plus de temps
     }
     else
     {
-        LCD_Delai_Us(50UL);
+        LCD_Delai_Us(LCD_COMMAND_DELAY_US);
     }
 }
 ```
@@ -203,12 +286,12 @@ void LCD_Commande(bool RW, bool RS, uint8_t Data)
 
 Le registre `GPIOB_BSRR` met chaque broche à 1 ou à 0. Pour éviter de toucher aux autres sorties, le code écrit les bits de mise à 1 ou de remise à 0 dans une seule écriture au registre. Les commandes `CLEAR` et `HOME` ont un délai de 2 ms; les autres opérations attendent 50 µs.
 
-La figure du fabricant confirme l’ordre des nibbles dans une interface 4 bits. Pour `0x28`, le bus présente d’abord `0010`, puis `1000`.
+Le tableau du hd44780 confirme l’ordre des nibbles dans une interface 4 bits. Pour `0x28`, le bus présente d’abord `0010`, puis `1000`.
 
 \begin{center}
 \includegraphics[width=0.62\textwidth]{images/doc_hd44780_4bit.png}
 
-{\small\textit{Figure 7 — Ordre des transferts en mode 4 bits. Hitachi HD44780U, p. 22.}}
+{\small\textit{Figure 13 - Ordre des transferts en mode 4 bits. Hitachi HD44780U, p. 22.}}
 \end{center}
 
 \newpage
@@ -222,17 +305,18 @@ void LCD_Ecrire_Char(unsigned char caractere, uint8_t ligne, uint8_t colonne)
 {
     uint8_t adresse;
 
-    if ((ligne < 1U) || (ligne > LCD_ROWS)
-        || (colonne < 1U) || (colonne > LCD_COLUMNS))
+    /* Les lignes et colonnes sont numérotées à partir de 1. */
+    if ((ligne < LCD_FIRST_POSITION) || (ligne > LCD_ROWS)
+        || (colonne < LCD_FIRST_POSITION) || (colonne > LCD_COLUMNS))
     {
         return;
     }
 
     adresse = (uint8_t)(LCD_CMD_SET_DDRAM
-                      | adresseLigne[ligne - 1U]
-                      | (uint8_t)(colonne - 1U));
-    LCD_Commande(false, false, adresse);
-    LCD_Commande(false, true, (uint8_t)caractere);
+                      | adresseLigne[ligne - LCD_FIRST_POSITION]
+                      | (uint8_t)(colonne - LCD_FIRST_POSITION));
+    LCD_Commande(false, false, adresse); // place le curseur
+    LCD_Commande(false, true, (uint8_t)caractere); // envoie le caractère
 }
 ```
 
@@ -245,7 +329,7 @@ Le bit 7 de l’instruction est mis à 1 pour choisir une adresse DDRAM. La fonc
 \begin{center}
 \includegraphics[width=0.65\textwidth]{images/doc_hd44780_ddram.png}
 
-{\small\textit{Figure 8 — Instruction et adresses DDRAM. Hitachi HD44780U, p. 29.}}
+{\small\textit{Figure 14 - Instruction et adresses DDRAM. Hitachi HD44780U, p. 29.}}
 \end{center}
 
 \newpage
@@ -261,26 +345,26 @@ void LCD_Affichage_Temps(void)
     uint8_t heures;
     uint8_t minutes;
     uint8_t secondes;
-    unsigned char caracteres[8];
+    unsigned char caracteres[TIME_CHAR_COUNT];
     uint8_t colonne;
 
     temps = Timer2_GetSecondsSinceMidnight();
-    heures = (uint8_t)(temps / 3600UL);
-    minutes = (uint8_t)((temps / 60UL) % 60UL);
-    secondes = (uint8_t)(temps % 60UL);
+    heures = (uint8_t)(temps / SECONDS_PER_HOUR);
+    minutes = (uint8_t)((temps / SECONDS_PER_MINUTE) % SECONDS_PER_MINUTE);
+    secondes = (uint8_t)(temps % SECONDS_PER_MINUTE);
 
-    caracteres[0] = (unsigned char)('0' + (heures / 10U));
-    caracteres[1] = (unsigned char)('0' + (heures % 10U));
+    caracteres[0] = (unsigned char)('0' + (heures / DECIMAL_BASE));
+    caracteres[1] = (unsigned char)('0' + (heures % DECIMAL_BASE));
     caracteres[2] = ':';
-    caracteres[3] = (unsigned char)('0' + (minutes / 10U));
-    caracteres[4] = (unsigned char)('0' + (minutes % 10U));
+    caracteres[3] = (unsigned char)('0' + (minutes / DECIMAL_BASE));
+    caracteres[4] = (unsigned char)('0' + (minutes % DECIMAL_BASE));
     caracteres[5] = ':';
-    caracteres[6] = (unsigned char)('0' + (secondes / 10U));
-    caracteres[7] = (unsigned char)('0' + (secondes % 10U));
+    caracteres[6] = (unsigned char)('0' + (secondes / DECIMAL_BASE));
+    caracteres[7] = (unsigned char)('0' + (secondes % DECIMAL_BASE));
 
-    for (colonne = 0U; colonne < 8U; colonne++)
+    for (colonne = 0U; colonne < TIME_CHAR_COUNT; colonne++)
     {
-        LCD_Ecrire_Char(caracteres[colonne], 1U, (uint8_t)(colonne + 1U));
+        LCD_Ecrire_Char(caracteres[colonne], LCD_FIRST_POSITION, (uint8_t)(colonne + LCD_FIRST_POSITION));
     }
 }
 ```
@@ -294,7 +378,7 @@ Cette fonction ne configure pas de registre matériel elle-même. Les transferts
 \begin{center}
 \includegraphics[width=0.62\textwidth]{images/doc_hd44780_4bit.png}
 
-{\small\textit{Figure 9 — Transfert d’un octet vers l’écran en mode 4 bits. Hitachi HD44780U, p. 22.}}
+{\small\textit{Figure 15 - Transfert d’un octet vers l’écran en mode 4 bits. Hitachi HD44780U, p. 22.}}
 \end{center}
 
 # 6. Réglage de TIM2
@@ -317,37 +401,67 @@ TIM2 produit donc une interruption chaque seconde. Le registre `TIM2_EGR` reçoi
 | `TIM2_PSC` | `0x40000028` | Divise l’horloge par `PSC + 1 = 8000`. |
 | `TIM2_ARR` | `0x4000002C` | Compte `ARR + 1 = 1000` impulsions avant Update. |
 | `NVIC_ISER0` | `0xE000E100` | Bit 28 à 1 pour activer l’IRQ TIM2. |
+| `NVIC_ICER0` | `0xE000E180` | Bit 28 à 1 au début de l’initialisation pour désactiver temporairement l’IRQ TIM2. |
+| `NVIC_ICPR0` | `0xE000E280` | Bit 28 à 1 pour effacer une ancienne IRQ TIM2 en attente. |
 
 \begin{center}
 \includegraphics[width=0.73\textwidth]{images/doc_rm0008_clock_tree.png}
 
-{\small\textit{Figure 10 — Arbre d’horloge STM32F103. ST RM0008, p. 93.}}
+{\small\textit{Figure 16 - Arbre d’horloge STM32F103. ST RM0008, p. 93.}}
 \end{center}
 
 \begin{center}
 \includegraphics[width=0.73\textwidth]{images/doc_rm0008_tim2_psc_arr.png}
 
-{\small\textit{Figure 11 — Définition des préscaler et auto-reload de TIM2. ST RM0008, p. 419.}}
+{\small\textit{Figure 17 - Définition du prescaler et du registre auto-reload de TIM2. ST RM0008, p. 419.}}
 \end{center}
 
-# 7. Vérification logicielle et limites
+# 7. Conclusion
 
-La compilation et l’édition de liens croisées du firmware avec `arm-none-eabi-gcc` ont réussi. L’image obtenue contient 2 004 octets de code et 1 576 octets de BSS. L’éditeur de liens a affiché des avertissements de stubs système newlib (`_close`, `_read`, `_write`, `_lseek`); il s’agit des appels système non fournis pour cette application bare metal. Aucun résultat de compilation ne prouve le fonctionnement sur une carte.
+Dans ce laboratoire, j’ai programmé le STM32F103 pour afficher l’heure au format `HH:MM:SS` sur un écran LCD en mode 4 bits. TIM2 fait avancer l’heure chaque seconde.
 
-Les trois essais avec l’analyseur logique, l’affichage réel du LCD, la précision du HSI et le passage physique à minuit restent **NON TESTÉS**. Il faudra ajouter les captures de l’analyseur et les observations de la carte après les essais.
+Avec Saleae Logic 2 et le décodeur HD44780, j’ai vérifié que la commande `0x28` est envoyée, que les commandes de rafraîchissement reviennent environ chaque seconde et que les signaux montrent le passage de `23:59:59` à `00:00:00`.
 
-Le dossier `build/qc1` présent dans Lab 3 a été copié du Lab 2 et son cache CMake référence toujours les sources du Lab 2. Il n’a pas été utilisé pour la compilation ci-dessus. Le firmware a été compilé dans un répertoire temporaire séparé afin de préserver ces fichiers existants.
+Les trois cas de test sont réussis pour les signaux capturés sur le bus LCD. La période moyenne mesurée est de 998,802 ms, près de la seconde théorique. Ces essais ne confirment pas l’affichage visuel des caractères sur le module. Le branchement réel de la broche `E` et la compatibilité électrique entre les sorties 3,3 V du STM32 et l’entrée du LCD alimenté à 5 V restent à vérifier.
 
-# 8. Conclusion
-
-Le code du Lab 3 configure le LCD en mode 4 bits, place les caractères à l’adresse DDRAM voulue et convertit le compteur de secondes en affichage `HH:MM:SS`. TIM2 est configuré pour une interruption d’une seconde et le passage de `23:59:59` à `00:00:00` est prévu dans le code. La compilation croisée a réussi. Il reste à vérifier le branchement électrique, exécuter les trois essais sur la carte et ajouter leurs captures réelles.
+\newpage
 
 # Références
+
+\small
 
 - Consignes du laboratoire : `TEP_Prog_Lab3.pdf`, fourni avec le travail.
 - Plan du laboratoire : `Laboratoires/Lab_3/plan.md`.
 - Documentation du contrôleur : Hitachi, *HD44780U Dot Matrix Liquid Crystal Display Controller/Driver*, fichier `../../../Documentation/Datashit/HD44780.pdf`, pages 22 et 29.
 - Documentation du module : Tinsharp, *TC2004A*, fichier `../../../Documentation/Datashit/TC2004A-01.pdf`, page 5.
-- Documentation STM32 : STMicroelectronics, *RM0008 Reference Manual*, fichier RM0008 dans `../../../Documentation/Datashit/`; pages 93, 113, 172–173 et 418–419.
-- Rapport du Lab 1 : `../../../Documentation/RapportLab1.pdf`; utilisé pour confirmer le branchement de `E` sur PB11.
+- Documentation STM32 : STMicroelectronics, *RM0008 Reference Manual*, fichier RM0008 dans `../../../Documentation/Datashit/`; pages 93, 113, 172-173 et 418-419.
+- Rapport du Lab 1 : `../../../Documentation/RapportLab1.pdf`; consulté pour repérer PB11 dans le code du Lab 1. Le câblage réel reste à confirmer.
 - Rapport du Lab 2 : `Laboratoires/Lab_2/RapportLab2.md`; utilisé comme référence pour la structure et la présentation du rapport.
+
+# Note sur l'utilisation de l'intelligence artificielle
+
+Je tiens à préciser que les explications, les démarches, les résultats, les réflexions et les réponses aux questions de ce rapport viennent de moi. Je réalise également mon travail de programmation, même si j'utilise parfois l'IA pour obtenir des explications, des critiques ou des suggestions d'amélioration.
+
+Je pense qu'il est important de rester prudent avant de conclure qu'un travail a été généré par l'IA simplement parce que son style « ressemble à de l'IA » ou parce qu'un détecteur l'indique. Ces outils ne sont pas infaillibles et peuvent produire des faux positifs. Un doute devrait donc servir à commencer une vérification, et non à constituer une preuve à lui seul.
+
+Ce problème est d'ailleurs documenté. Une [étude de Stanford](https://arxiv.org/abs/2304.02819) a montré que certains détecteurs classaient à tort, en moyenne, **61,22 % des textes d'étudiants non anglophones** comme étant générés par l'IA. OpenAI avait également retiré son propre détecteur en juillet 2023 en raison de sa faible précision : il identifiait correctement seulement **26 % des textes générés par IA** lors de ses évaluations.
+
+L'IAG évolue extrêmement rapidement et, même pour un utilisateur expérimenté ou un *power user*, il devient difficile de déterminer avec certitude l'origine d'un texte simplement en l'observant.
+
+## Transparence sur ma façon de travailler
+
+- **Mise en page et Markdown :** c'est principalement pour cette partie que j'utilise l'IA. Je lui fournis moi-même mon code, mes explications, mes résultats, mes photos, mes captures d'écran et les autres textes. Elle s'occupe ensuite de les organiser, de les placer et d'écrire le Markdown nécessaire pour obtenir un rapport bien structuré et un PDF propre. Je connais également les bases du Markdown, mais cette méthode me fait gagner beaucoup de temps.
+
+- **Mise à jour des rapports :** lorsque j'apporte des modifications finales à mon code, je peux demander à l'IA d'actualiser mon rapport. Je lui précise de **ne modifier aucunement mes explications, mes résultats ou mes autres textes personnels**, mais seulement de mettre à jour les éléments concernés.
+
+- **Programmation et critiques :** j'utilise parfois l'IA pour comprendre certaines notions, repérer des erreurs ou obtenir des suggestions pour améliorer mon code, par exemple en remplaçant des *magic numbers* par des constantes plus explicites. J'écoute toujours ses critiques, mais je prends le temps de comprendre les modifications proposées avant de décider de les appliquer. Je sais également que l'IA peut se tromper.
+
+- **Correction du français :** j'utilise **Antidote 12** pour corriger mes fautes et améliorer certaines formulations lorsque mes phrases sont difficiles à comprendre.
+
+Je fais donc une distinction entre **utiliser l'IA comme outil d'apprentissage, de révision et de mise en forme, et lui demander de faire mon travail à ma place**.
+
+Si quelque chose vous semble douteux, je préfère que vous veniez me voir avant de tirer une conclusion. Je suis disponible pour vous montrer mes fichiers de travail, mon historique de modifications ou vous expliquer en personne n'importe quelle partie de mon code ou de ma démarche.
+
+Cette approche me semble plus juste et cohérente avec les principes de la PIEA, notamment l'importance d'un jugement d'évaluation fondé, documenté et interprété avec prudence.
+
+\normalsize

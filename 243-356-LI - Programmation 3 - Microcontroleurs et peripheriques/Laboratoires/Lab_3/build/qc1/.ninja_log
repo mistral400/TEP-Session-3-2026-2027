@@ -1,11 +1,16 @@
 # ninja log v6
-23	79	1792092321602364098	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/Src/main.c.obj	bcdbf0f36e517d00
-22	66	1792092321601825560	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/Src/SysTick.c.obj	1ff799a5d3ff8877
-23	74	1792092321602192557	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/Src/gpio.c.obj	4bda074b8f077ff1
-79	150	1792092321658353018	firmware.elf	208a1b6fb1017630
-22	73	1792092321602022350	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/Src/Timer2.c.obj	7a5d1a31fdb094ac
-22	77	1792092321601498062	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/Src/LCD.c.obj	61ef73b7a8b81082
+1	21	1792499976204988156	/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_3/build/qc1/CMakeFiles/cmake.verify_globs	10d91f4d7700a782
 23	61	1792092321602550596	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/startup_stm32f103xb.s.obj	20ddcf9de16bf619
-1	21	1792092336333089708	/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_3/build/qc1/CMakeFiles/cmake.verify_globs	10d91f4d7700a782
-0	21	1792092339815751062	/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_3/build/qc1/CMakeFiles/cmake.verify_globs	10d91f4d7700a782
-1	28	1792092451141255282	/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_3/build/qc1/CMakeFiles/cmake.verify_globs	10d91f4d7700a782
+22	77	1792092321601498062	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/Src/LCD.c.obj	61ef73b7a8b81082
+62	113	1792499968925936579	firmware.elf	208a1b6fb1017630
+23	179	1792499141946458332	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/Src/Timer2.c.obj	7a5d1a31fdb094ac
+23	178	1792499141946790538	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/Src/gpio.c.obj	4bda074b8f077ff1
+22	66	1792092321601825560	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/Src/SysTick.c.obj	1ff799a5d3ff8877
+22	62	1792499968885048569	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/Src/main.c.obj	bcdbf0f36e517d00
+1	15	1792680749085628287	/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_3/build/qc1/CMakeFiles/cmake.verify_globs	10d91f4d7700a782
+16	304	1792680749101337376	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/Src/SysTick.c.obj	1ff799a5d3ff8877
+17	305	1792680749101586333	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/Src/gpio.c.obj	4bda074b8f077ff1
+16	305	1792680749101092168	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/Src/LCD.c.obj	61ef73b7a8b81082
+16	305	1792680749101458792	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/Src/Timer2.c.obj	7a5d1a31fdb094ac
+17	305	1792680749101704749	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_3/Src/main.c.obj	bcdbf0f36e517d00
+305	367	1792680749390140106	firmware.elf	208a1b6fb1017630

@@ -1,3 +1,4 @@
+
 #include "Timer2.h"
 
 #define RCC_APB1ENR (*(volatile uint32_t *)0x4002101CUL)
@@ -22,7 +23,18 @@
 #define TIM2_UG            (1UL << 0)
 #define TIM2_IRQ           (1UL << 28)
 
-#define SECONDS_PER_DAY 86400UL
+#define CPU_HZ             8000000UL
+#define TIMER_TICK_HZ      1000UL
+#define TIMER_UPDATE_HZ    1UL
+
+#define TIM2_PRESCALER ((CPU_HZ / TIMER_TICK_HZ) - 1UL)
+#define TIM2_PERIOD    ((TIMER_TICK_HZ / TIMER_UPDATE_HZ) - 1UL)
+
+#define HOURS_PER_DAY     24U
+#define MINUTES_PER_HOUR  60U
+#define SECONDS_PER_MINUTE 60U
+#define SECONDS_PER_HOUR  3600UL
+#define SECONDS_PER_DAY   86400UL
 
 static volatile uint32_t secondesDepuisMinuit = 0UL;
 static volatile uint32_t nombreDeMisesAJour = 0UL;
@@ -36,8 +48,8 @@ void Timer2_Init(void)
     TIM2_CR1 = TIM2_URS; // seules les fins de période demandent une IRQ
     TIM2_DIER = 0UL; // désactive les interruptions du timer
     TIM2_CNT = 0UL;
-    TIM2_PSC = 7999UL; // 8 MHz / (7999 + 1) = 1 kHz
-    TIM2_ARR = 999UL; // 1000 ticks à 1 kHz = 1 seconde
+    TIM2_PSC = TIM2_PRESCALER; // 8 MHz / (7999 + 1) = 1 kHz
+    TIM2_ARR = TIM2_PERIOD; // 1000 ticks à 1 kHz = 1 seconde
 
     TIM2_EGR = TIM2_UG; // applique le prescaler et le rechargement
     TIM2_SR = 0UL; // efface les indicateurs en attente
@@ -62,13 +74,13 @@ uint32_t Timer2_GetUpdateCount(void)
 
 unsigned char Timer2_SetTime(uint8_t heures, uint8_t minutes, uint8_t secondes)
 {
-    if ((heures >= 24U) || (minutes >= 60U) || (secondes >= 60U))
+    if ((heures >= HOURS_PER_DAY) || (minutes >= MINUTES_PER_HOUR) || (secondes >= SECONDS_PER_MINUTE))
     {
         return 0U;
     }
 
-    secondesDepuisMinuit = ((uint32_t)heures * 3600UL)
-                         + ((uint32_t)minutes * 60UL)
+    secondesDepuisMinuit = ((uint32_t)heures * SECONDS_PER_HOUR)
+                         + ((uint32_t)minutes * SECONDS_PER_MINUTE)
                          + (uint32_t)secondes;
     return 1U;
 }
