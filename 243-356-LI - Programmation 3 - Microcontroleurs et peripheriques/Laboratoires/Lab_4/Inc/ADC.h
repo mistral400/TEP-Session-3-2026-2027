@@ -6,13 +6,13 @@
 // Valeur maximale de l'ADC 12 bits
 #define ADC1_CODE_MAX 4095UL
 
-// Tension de référence théorique
+// Tension maximal e de référence de l'ADC1 en mV
 #define ADC1_VREF_MV 3300UL
 
-// Vmin mesurée au multimètre : 0,0003 V
+// Vmin mesurée au multimètre sur le pot: 0,0003 V
 #define ADC1_VMIN_MV 0UL
 
-// Vmax mesurée au multimètre : 3,1964 V
+// Vmax mesurée au multimètre sur le pot: 3,1964 V
 #define ADC1_VMAX_MV 3196UL // vmax 
 
 

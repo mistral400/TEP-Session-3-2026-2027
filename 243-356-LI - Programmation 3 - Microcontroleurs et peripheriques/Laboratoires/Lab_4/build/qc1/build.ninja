@@ -65,30 +65,6 @@ build CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026
   OBJECT_DIR = CMakeFiles/firmware.dir
   OBJECT_FILE_DIR = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src
 
-build CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/SysTick.c.obj: C_COMPILER__firmware_unscanned_Debug /Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI$ -$ Programmation$ 3$ -$ Microcontroleurs$ et$ peripheriques/Laboratoires/Lab_4/Src/SysTick.c || cmake_object_order_depends_target_firmware
-  DEFINES = -DSTM32F103xB
-  DEP_FILE = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/SysTick.c.obj.d
-  FLAGS = -g -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -ffunction-sections -fdata-sections -Wall -Wextra -Wno-unused-parameter
-  INCLUDES = -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_4/Core/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_4/Inc"
-  OBJECT_DIR = CMakeFiles/firmware.dir
-  OBJECT_FILE_DIR = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src
-
-build CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/Timer2.c.obj: C_COMPILER__firmware_unscanned_Debug /Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI$ -$ Programmation$ 3$ -$ Microcontroleurs$ et$ peripheriques/Laboratoires/Lab_4/Src/Timer2.c || cmake_object_order_depends_target_firmware
-  DEFINES = -DSTM32F103xB
-  DEP_FILE = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/Timer2.c.obj.d
-  FLAGS = -g -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -ffunction-sections -fdata-sections -Wall -Wextra -Wno-unused-parameter
-  INCLUDES = -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_4/Core/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_4/Inc"
-  OBJECT_DIR = CMakeFiles/firmware.dir
-  OBJECT_FILE_DIR = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src
-
-build CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/gpio.c.obj: C_COMPILER__firmware_unscanned_Debug /Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI$ -$ Programmation$ 3$ -$ Microcontroleurs$ et$ peripheriques/Laboratoires/Lab_4/Src/gpio.c || cmake_object_order_depends_target_firmware
-  DEFINES = -DSTM32F103xB
-  DEP_FILE = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/gpio.c.obj.d
-  FLAGS = -g -mcpu=cortex-m3 -mthumb -mfloat-abi=soft -ffunction-sections -fdata-sections -Wall -Wextra -Wno-unused-parameter
-  INCLUDES = -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_4/Core/Inc" -I"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_4/Inc"
-  OBJECT_DIR = CMakeFiles/firmware.dir
-  OBJECT_FILE_DIR = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src
-
 build CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/main.c.obj: C_COMPILER__firmware_unscanned_Debug /Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI$ -$ Programmation$ 3$ -$ Microcontroleurs$ et$ peripheriques/Laboratoires/Lab_4/Src/main.c || cmake_object_order_depends_target_firmware
   DEFINES = -DSTM32F103xB
   DEP_FILE = CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/main.c.obj.d
@@ -113,7 +89,7 @@ build CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026
 #############################################
 # Link the executable firmware.elf
 
-build firmware.elf: C_EXECUTABLE_LINKER__firmware_Debug CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/ADC.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/LCD.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/SysTick.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/Timer2.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/gpio.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/main.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/startup_stm32f103xb.s.obj
+build firmware.elf: C_EXECUTABLE_LINKER__firmware_Debug CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/ADC.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/LCD.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/main.c.obj CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/startup_stm32f103xb.s.obj
   FLAGS = -g
   LINK_FLAGS = -mcpu=cortex-m3 -mthumb -mfloat-abi=soft --specs=nano.specs --specs=nosys.specs "-T/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_4/stm32f103xb_flash.ld" "-Wl,-Map=/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_4/build/qc1/firmware.map,--cref" -Wl,--gc-sections -Wl,--start-group -lc -lm -Wl,--end-group
   OBJECT_DIR = CMakeFiles/firmware.dir

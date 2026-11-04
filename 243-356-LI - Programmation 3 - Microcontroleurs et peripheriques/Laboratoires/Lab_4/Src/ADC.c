@@ -54,12 +54,6 @@
 #define LCD_TEXT_LENGTH 11U
 #define ADC1_ROUNDING_OFFSET (ADC1_CODE_MAX / 2UL)
 
-#if ADC1_LIMITES_MESUREES != 0U
-#if ADC1_VMIN_MV > ADC1_VMAX_MV
-#error "ADC1_VMIN_MV doit etre inferieur ou egal a ADC1_VMAX_MV"
-#endif
-#endif
-
 static bool affichageInitialise = false;
 static uint32_t dernierAffichageCycle = 0UL;
 static char ancienTexte[LCD_TEXT_LENGTH] = {0};
@@ -90,18 +84,11 @@ static uint32_t ADC1_ConvertirEnMillivolts(uint16_t code)
 
     millivolts = (((uint32_t)code * ADC1_VREF_MV) + ADC1_ROUNDING_OFFSET)
                / ADC1_CODE_MAX;
-
-#if ADC1_LIMITES_MESUREES != 0U
-    if (millivolts < ADC1_VMIN_MV)
-    {
-        millivolts = ADC1_VMIN_MV;
-    }
-    else if (millivolts > ADC1_VMAX_MV)
-    {
-        millivolts = ADC1_VMAX_MV;
-    }
-#endif
-
+// empeche de dépasser Vmax
+ if (millivolts > ADC1_VMAX_MV)
+{
+    millivolts = ADC1_VMAX_MV;
+}
     return millivolts;
 }
 
@@ -140,26 +127,26 @@ static void ADC1_EcrireTexte(const char texte[LCD_TEXT_LENGTH])
 
 void ADC1_Init(void)
 {
-    /* SystemInit() fixe HSI et PCLK2 à 8 MHz; ADCPRE = 00 donne 4 MHz. */
+    // SystemInit() fixe HSI et PCLK2 à 8 MHz; ADCPRE = 00 donne 4 MHz 
     RCC_APB2ENR |= RCC_GPIOA_CLOCK_ENABLE | RCC_ADC1_CLOCK_ENABLE;
     RCC_CFGR = (RCC_CFGR & ~RCC_ADC_PRESCALER_MASK)
              | RCC_ADC_PRESCALER_DIV2;
 
-    /* PA0: MODE0=00 et CNF0=00, donc entrée analogique. */
+    // PA0: MODE0=00 et CNF0=00, donc entrée analogique
     GPIOA_CRL &= ~GPIO_PA0_CONFIG_MASK;
 
-    ADC1_CR1 = 0UL; /* mode indépendant, une seule conversion régulière */
+    ADC1_CR1 = 0UL; // mode indépendant, une seule conversion régulière 
     ADC1_CR2 = ADC1_EXTSEL_SOFTWARE | ADC1_EXTTRIG;
-    /* CONT=0, alignement à droite et déclenchement logiciel sélectionné. */
+    // CONT=0, alignement à droite et déclenchement logiciel sélectionné 
     ADC1_SMPR2 = (ADC1_SMPR2 & ~ADC1_CHANNEL0_SAMPLE_MASK)
                | ADC1_CHANNEL0_SAMPLE_239_5;
-    ADC1_SQR1 &= ~ADC1_SEQUENCE_LENGTH_MASK; /* longueur L=0: une conversion */
+    ADC1_SQR1 &= ~ADC1_SEQUENCE_LENGTH_MASK; // longueur L=0: une conversion 
     ADC1_SQR3 = (ADC1_SQR3 & ~ADC1_RANK1_CHANNEL_MASK)
-              | ADC1_RANK1_CHANNEL0; /* rang 1: canal 0 */
+              | ADC1_RANK1_CHANNEL0; // rang 1: canal 0 
     ADC1_SR = 0UL;
 
-    ADC1_CR2 |= ADC1_ADON;
-    ADC1_AttendreCycles(ADC1_SETTLING_CYCLES); /* 2 us après ADON; SysTick lancé par LCD_Init */
+    ADC1_CR2 |= ADC1_ADON; // 2 us après ADON; SysTick lancé par LCD_Init
+    ADC1_AttendreCycles(ADC1_SETTLING_CYCLES);
 
     ADC1_CR2 |= ADC1_RSTCAL;
     while ((ADC1_CR2 & ADC1_RSTCAL) != 0UL)

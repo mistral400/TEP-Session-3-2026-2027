@@ -75,7 +75,7 @@ static void LCD_Delai_Us(uint32_t microsecondes)
     cycles = (CPU_HZ / US_PER_SECOND) * microsecondes;
     depart = SYST_CVR;
 
-    /* Le compteur SysTick descend et revient à 0xFFFFFF après zéro. */
+    // Le compteur SysTick descend et revient à 0xFFFFFF après zéro 
     while (((depart - SYST_CVR) & SYST_MASK) < cycles)
     {
     }

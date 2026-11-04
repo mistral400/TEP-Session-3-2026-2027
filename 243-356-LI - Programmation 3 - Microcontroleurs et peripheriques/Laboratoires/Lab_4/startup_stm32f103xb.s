@@ -72,3 +72,9 @@ Default_Handler:
     b .
 
 .size Default_Handler, .-Default_Handler
+// Gestionnaires par défaut des interruptions inutilisées
+.weak SysTick_Handler
+.thumb_set SysTick_Handler, Default_Handler
+
+.weak TIM2_IRQHandler
+.thumb_set TIM2_IRQHandler, Default_Handler
