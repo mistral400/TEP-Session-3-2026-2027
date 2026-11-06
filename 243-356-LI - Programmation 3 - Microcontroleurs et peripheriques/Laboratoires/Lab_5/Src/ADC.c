@@ -54,7 +54,7 @@
 #define LCD_TEXT_LENGTH 11U
 #define ADC1_ROUNDING_OFFSET (ADC1_CODE_MAX / 2UL)
 
-
+s
 static bool affichageInitialise = false;
 static uint32_t dernierAffichageCycle = 0UL;
 static char ancienTexte[LCD_TEXT_LENGTH] = {0};
