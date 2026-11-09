@@ -174,7 +174,7 @@ uint16_t ADC1_Lire(void)
     return (uint16_t)(resultat & ADC1_DATA_MASK);
 }
 
-void LCD_Affichage_Potentiometre(void)
+uint16_t LCD_Affichage_Potentiometre(void)
 {
     uint16_t code;
     uint32_t millivolts;
@@ -191,4 +191,11 @@ void LCD_Affichage_Potentiometre(void)
     ADC1_FormaterTension(millivolts, texte);
     ADC1_EcrireTexte(texte);
     dernierAffichageCycle = SYST_CVR;
+
+    return code;
+}
+
+void ADC1_ReinitialiserAffichage(void)
+{
+    affichageInitialise = false;
 }

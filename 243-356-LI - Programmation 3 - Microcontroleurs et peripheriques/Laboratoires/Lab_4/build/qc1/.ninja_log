@@ -1,8 +1,8 @@
 # ninja log v6
-13	55	1793978919390974942	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/ADC.c.obj	8c9ae8180fde68c7
-55	100	1793978919432937834	firmware.elf	52e7ff3f0493f978
-14	41	1793978919391549274	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/startup_stm32f103xb.s.obj	a97c06e69900a47a
-14	54	1793978919391262566	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/LCD.c.obj	de752de8dd2e1f10
-0	13	1793978947780764731	/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_4/build/qc1/CMakeFiles/cmake.verify_globs	c3c71618c149bf67
-14	53	1793978919391413899	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/main.c.obj	db3363992e7d9906
-0	11	1793978956229312690	/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_4/build/qc1/CMakeFiles/cmake.verify_globs	c3c71618c149bf67
+12	102	1794076857055575772	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/main.c.obj	db3363992e7d9906
+0	12	1794076857043427502	/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_4/build/qc1/CMakeFiles/cmake.verify_globs	c3c71618c149bf67
+14	49	1794074318984234137	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/LCD.c.obj	de752de8dd2e1f10
+15	40	1794074318984501345	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/startup_stm32f103xb.s.obj	a97c06e69900a47a
+102	141	1794076857144987404	firmware.elf	52e7ff3f0493f978
+12	102	1794076857055351564	CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_4/Src/ADC.c.obj	8c9ae8180fde68c7
+1	13	1794076858457871984	/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_4/build/qc1/CMakeFiles/cmake.verify_globs	c3c71618c149bf67
