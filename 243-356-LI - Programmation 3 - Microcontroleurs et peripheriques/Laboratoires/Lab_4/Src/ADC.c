@@ -4,7 +4,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#define RCC_CFGR   (*(volatile uint32_t *)0x40021004UL)
+#define RCC_CFGR   (*(volatile uint32_t *)0x40021004UL) 
 #define RCC_APB2ENR (*(volatile uint32_t *)0x40021018UL)
 
 #define GPIOA_CRL (*(volatile uint32_t *)0x40010800UL)
