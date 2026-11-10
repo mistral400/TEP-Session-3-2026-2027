@@ -52,7 +52,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/bin/cmake" --regenerate-during-build -S/Users/matisserheaume-viale/.vscode/extensions/mistral400.qc1-stm32-tools-0.4.0/resources/cmake -B"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_5/build/qc1"
+  command = "/Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/cmake/bin/cmake" --regenerate-during-build -S/Users/matisserheaume-viale/.vscode/extensions/mistral400.qc1-stm32-tools-0.5.2/resources/cmake -B"/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI - Programmation 3 - Microcontroleurs et peripheriques/Laboratoires/Lab_5/build/qc1"
   description = Re-running CMake...
   generator = 1
 

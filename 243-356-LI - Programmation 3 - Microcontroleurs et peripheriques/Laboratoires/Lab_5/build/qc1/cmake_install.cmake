@@ -1,4 +1,4 @@
-# Install script for directory: /Users/matisserheaume-viale/.vscode/extensions/mistral400.qc1-stm32-tools-0.4.0/resources/cmake
+# Install script for directory: /Users/matisserheaume-viale/.vscode/extensions/mistral400.qc1-stm32-tools-0.5.2/resources/cmake
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
