@@ -70,13 +70,15 @@ static void ADC1_AttendreCycles(uint32_t cycles)
 
 static void ADC1_AttendreRafraichissement(void) 
 {
-    uint32_t cyclesEcoules; 
-
-    do
+    static uint32_t dernierTempsMs = 0;
+    uint32_t tempsActuel = SysTick_GetMs();
+    
+    if (tempsActuel - dernierTempsMs < 50) // Attendre 50 ms
     {
-        cyclesEcoules = (dernierAffichageCycle - SYST_CVR) & SYSTICK_MASK;
+        SysTick_DelaiMs(50 - (tempsActuel - dernierTempsMs));
     }
-    while (cyclesEcoules < ADC1_REFRESH_CYCLES);
+    
+    dernierTempsMs = SysTick_GetMs();
 }
 
 static uint32_t ADC1_ConvertirEnMillivolts(uint16_t code)
