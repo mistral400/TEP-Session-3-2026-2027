@@ -9,7 +9,7 @@
 
 #define GPIOA_CRL (*(volatile uint32_t *)0x40010800UL)
 
-#define ADC1_SR    (*(volatile uint32_t *)0x40012400UL)
+#define ADC1_SR    (*(volatile uint32_t *)0x40012400UL) 
 #define ADC1_CR1   (*(volatile uint32_t *)0x40012404UL)
 #define ADC1_CR2   (*(volatile uint32_t *)0x40012408UL)
 #define ADC1_SMPR2 (*(volatile uint32_t *)0x40012410UL)
@@ -91,7 +91,7 @@ static uint32_t ADC1_ConvertirEnMillivolts(uint16_t code)
 }
     return millivolts;
 }
-
+// Formate la tension en millivolts en une chaîne de caractères pour l'affichage sur le LCD
 static void ADC1_FormaterTension(uint32_t millivolts, char texte[LCD_TEXT_LENGTH])
 {
     texte[0] = 'A';
@@ -163,24 +163,24 @@ uint16_t ADC1_Lire(void)
 {
     uint32_t resultat;
 
-    (void)ADC1_DR; /* lecture de DR acquitte un éventuel EOC précédent */
+    (void)ADC1_DR; // la lecture de DR efface EOC, donc on le fait avant de lancer la conversion
     ADC1_CR2 |= ADC1_SWSTART;
 
     while ((ADC1_SR & ADC1_EOC) == 0UL)
     {
     }
 
-    resultat = ADC1_DR; /* la lecture de DR efface EOC */
+    resultat = ADC1_DR; // lecture de DR efface EOC
     return (uint16_t)(resultat & ADC1_DATA_MASK);
 }
 
-uint16_t LCD_Affichage_Potentiometre(void)
+void LCD_Affichage_Potentiometre(void)
 {
     uint16_t code;
     uint32_t millivolts;
     char texte[LCD_TEXT_LENGTH];
 
-    /* Premier affichage immédiat, puis une mesure toutes les 50 ms. */
+    // Si l'affichage a déjà été initialisé, on attend le prochain cycle de rafraîchissement
     if (affichageInitialise)
     {
         ADC1_AttendreRafraichissement();
@@ -191,11 +191,6 @@ uint16_t LCD_Affichage_Potentiometre(void)
     ADC1_FormaterTension(millivolts, texte);
     ADC1_EcrireTexte(texte);
     dernierAffichageCycle = SYST_CVR;
-
-    return code;
 }
-
-void ADC1_ReinitialiserAffichage(void)
-{
-    affichageInitialise = false;
-}
+// FUN FACT SUR L'ADC QUE J'AI APPRIS: L’ADC 12 bits du STM32 peut détecter des variations de 0,806 mV,
+//  mais le bruit de sa propre alimentation peut fausser ses mesures.

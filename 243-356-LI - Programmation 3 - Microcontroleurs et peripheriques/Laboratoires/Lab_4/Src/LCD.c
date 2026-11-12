@@ -129,11 +129,11 @@ static void LCD_GPIO_Init(void)
 {
     RCC_APB2ENR |= GPIOB_CLOCK_ENABLE; // active l'horloge de GPIOB
 
-    /* PB9 à PB15: sortie générale push-pull à 2 MHz (MODE=10, CNF=00). */
+    // PB9 à PB15: sortie générale push-pull à 2 MHz (MODE=10, CNF=00)
     GPIOB_CRH &= ~GPIOB_CONFIG_MASK;
     GPIOB_CRH |= GPIOB_CONFIG_OUTPUT;
 
-    /* RS, R/W, E et DB4-DB7 commencent à zéro. */
+    // RS, R/W, E et DB4-DB7 commencent à zéro 
     GPIOB_BSRR = LCD_7_PINS_MASK << GPIO_RESET_SHIFT;
 }
 
@@ -141,7 +141,7 @@ void LCD_Init(void)
 {
     LCD_GPIO_Init();
 
-    /* SysTick sert ici de compteur libre pour les délais du LCD. */
+    // SysTick sert ici de compteur libre pour les délais du LCD
     SYST_CSR = 0UL;
     SYST_RVR = SYST_RELOAD;
     SYST_CVR = 0UL;
@@ -149,7 +149,7 @@ void LCD_Init(void)
 
     LCD_Delai_Ms(LCD_STARTUP_DELAY_MS); // laisse le temps au LCD de démarrer
 
-    /* Séquence spéciale: au démarrage, le contrôleur attend encore 8 bits. */
+    // Le LCD démarre en mode 8 bits, on envoie donc des nibbles pour passer en mode 4 bits
     LCD_Envoyer_Nibble(LCD_INIT_8BIT);
     LCD_Delai_Us(LCD_INIT_DELAY1_US);
 
@@ -171,7 +171,7 @@ void LCD_Init(void)
 
 void LCD_Commande(bool RW, bool RS, uint8_t Data)
 {
-    /* L'interface demandée envoie des octets; la lecture n'a pas de retour. */
+    // Si RW est à 1, on ne fait rien car le LCD n'est pas en mode lecture
     if (RW)
     {
         return;
@@ -197,7 +197,7 @@ void LCD_Ecrire_Char(unsigned char caractere, uint8_t ligne, uint8_t colonne)
 {
     uint8_t adresse;
 
-    /* Les lignes et colonnes sont numérotées à partir de 1. */
+    // Vérifie que la ligne et la colonne sont valides
     if ((ligne < LCD_FIRST_POSITION) || (ligne > LCD_ROWS)
         || (colonne < LCD_FIRST_POSITION) || (colonne > LCD_COLUMNS))
     {

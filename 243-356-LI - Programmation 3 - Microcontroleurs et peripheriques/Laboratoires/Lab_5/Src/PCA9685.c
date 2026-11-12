@@ -25,8 +25,8 @@
 #define PCA9685_DUTY_MAX 100U
 #define PCA9685_FULL_ON 0x10U
 #define PCA9685_FULL_OFF 0x10U
-#define PCA9685_SERVO_MIN 205U
-#define PCA9685_SERVO_MAX 410U
+#define PCA9685_SERVO_MIN 102U /* Environ 0,5 ms à 50 Hz; à calibrer. */
+#define PCA9685_SERVO_MAX 512U /* Environ 2,5 ms à 50 Hz; à calibrer. */
 #define PCA9685_SERVO_ANGLE_MAX 180U
 
 static uint8_t PCA9685_EcrireRegistre(uint8_t registre, uint8_t valeur)
@@ -203,7 +203,8 @@ void PCA9685_SetServoAngle(uint8_t canal, uint8_t angle)
 
     valeur = PCA9685_SERVO_MIN +
              ((uint32_t)angle *
-             (PCA9685_SERVO_MAX - PCA9685_SERVO_MIN)) / 180UL;
+             (PCA9685_SERVO_MAX - PCA9685_SERVO_MIN)) /
+             PCA9685_SERVO_ANGLE_MAX;
 
     registre = PCA9685_REG_LED0_ON_L + (canal * 4U);
 

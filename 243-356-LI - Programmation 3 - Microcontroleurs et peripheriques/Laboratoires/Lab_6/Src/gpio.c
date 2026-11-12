@@ -1,5 +1,6 @@
 
 #include "gpio.h"
+#include "SysTick.h"
 
 #define RCC_APB2ENR (*(volatile uint32_t *)0x40021018UL)
 
@@ -23,9 +24,13 @@
 #define BUTTON_CONFIG_SHIFT (BUTTON_PIN * GPIO_CONFIG_BITS)
 
 #define LED_OUTPUT_MODE  0x2u
-#define BUTTON_INPUT_MODE 0x4u
+#define BUTTON_PULLUP_MODE 0x8u
+#define BUTTON_ANTIREBOND_MS 20UL
 
 static uint8_t etatLED = LED_OFF;
+static uint8_t etatBrutBouton = 0U;
+static uint8_t etatStableBouton = 0U;
+static uint32_t tempsChangementBouton = 0UL;
 
 void LED_Init(void)
 {
@@ -68,17 +73,41 @@ void Button_Init(void)
     RCC_APB2ENR |= GPIOB_CLOCK_ENABLE;
 
     GPIOB_CRL &= ~(GPIO_CONFIG_MASK << BUTTON_CONFIG_SHIFT);
-    GPIOB_CRL |= (BUTTON_INPUT_MODE << BUTTON_CONFIG_SHIFT);
+    GPIOB_CRL |= (BUTTON_PULLUP_MODE << BUTTON_CONFIG_SHIFT);
+    GPIOB_BSRR = BUTTON_MASK;
+
+    etatBrutBouton = 0U;
+    etatStableBouton = 0U;
+    tempsChangementBouton = SysTick_GetMs();
 }
 
 uint8_t Button_Read(void)
 {
-    if ((GPIOB_IDR & BUTTON_MASK) == 0u)
+    uint8_t etatActuel;
+    uint32_t tempsActuel;
+
+    etatActuel = ((GPIOB_IDR & BUTTON_MASK) == 0U) ? 1U : 0U;
+    tempsActuel = SysTick_GetMs();
+
+    if (etatActuel != etatBrutBouton)
     {
-        return 1u;
+        etatBrutBouton = etatActuel;
+        tempsChangementBouton = tempsActuel;
+        return 0U;
     }
-    else
+
+    if (((uint32_t)(tempsActuel - tempsChangementBouton)
+         >= BUTTON_ANTIREBOND_MS) &&
+        (etatActuel != etatStableBouton))
     {
-        return 0u;
+        etatStableBouton = etatActuel;
+
+        /* Le bouton est actif à zéro; signaler seulement le nouvel appui. */
+        if (etatStableBouton != 0U)
+        {
+            return 1U;
+        }
     }
+
+    return 0U;
 }

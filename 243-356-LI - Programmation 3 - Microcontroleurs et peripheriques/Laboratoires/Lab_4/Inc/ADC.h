@@ -20,7 +20,6 @@
 
 void ADC1_Init(void); // Configure l'ADC1 pour lire la valeur du potentiomètre
 uint16_t ADC1_Lire(void); // Lit la valeur de l'ADC1 et retourne la valeur ADC 4095
-uint16_t LCD_Affichage_Potentiometre(void); // Affiche la tension et retourne la mesure ADC
-void ADC1_ReinitialiserAffichage(void); // Force le prochain affichage complet de l'ADC
+void LCD_Affichage_Potentiometre(void); // Affiche en mv l'ADC sur le LCD
 
 #endif

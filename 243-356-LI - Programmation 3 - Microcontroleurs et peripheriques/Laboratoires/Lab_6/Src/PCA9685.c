@@ -25,8 +25,8 @@
 #define PCA9685_DUTY_MAX 100U
 #define PCA9685_FULL_ON 0x10U
 #define PCA9685_FULL_OFF 0x10U
-#define PCA9685_SERVO_MIN 205U
-#define PCA9685_SERVO_MAX 410U
+#define PCA9685_SERVO_MIN 102U /* Environ 0,5 ms à 50 Hz; à calibrer. */
+#define PCA9685_SERVO_MAX 512U /* Environ 2,5 ms à 50 Hz; à calibrer. */
 #define PCA9685_SERVO_ANGLE_MAX 180U
 
 static uint8_t PCA9685_EcrireRegistre(uint8_t registre, uint8_t valeur)

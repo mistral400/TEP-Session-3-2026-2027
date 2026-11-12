@@ -532,7 +532,7 @@ LOAD /Users/matisserheaume-viale/Library/Application Support/Code/User/globalSto
                 0x08000000                g_pfnVectors
                 0x080000ec                        . = ALIGN (0x4)
 
-.text           0x080000ec      0xdbc
+.text           0x080000ec      0xda4
                 0x080000ec                        . = ALIGN (0x4)
  *(.text)
  .text          0x080000ec       0x60 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/startup_stm32f103xb.s.obj
@@ -613,107 +613,107 @@ LOAD /Users/matisserheaume-viale/Library/Application Support/Code/User/globalSto
                 0x08000aec       0xb8 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/PCA9685.c.obj
                 0x08000aec                PCA9685_ConfigurerPWM0
  .text.PCA9685_SetServoAngle
-                0x08000ba4       0x8c CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/PCA9685.c.obj
+                0x08000ba4       0x90 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/PCA9685.c.obj
                 0x08000ba4                PCA9685_SetServoAngle
  .text.SysTick_Init
-                0x08000c30       0x3c CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/SysTick.c.obj
-                0x08000c30                SysTick_Init
+                0x08000c34       0x3c CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/SysTick.c.obj
+                0x08000c34                SysTick_Init
  .text.SysTick_GetMs
-                0x08000c6c       0x14 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/SysTick.c.obj
-                0x08000c6c                SysTick_GetMs
+                0x08000c70       0x14 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/SysTick.c.obj
+                0x08000c70                SysTick_GetMs
  .text.SysTick_Handler
-                0x08000c80       0x1c CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/SysTick.c.obj
-                0x08000c80                SysTick_Handler
+                0x08000c84       0x1c CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/SysTick.c.obj
+                0x08000c84                SysTick_Handler
  .text.SysTick_DelaiMs
-                0x08000c9c       0x2a CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/SysTick.c.obj
-                0x08000c9c                SysTick_DelaiMs
- *fill*         0x08000cc6        0x2 
+                0x08000ca0       0x2a CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/SysTick.c.obj
+                0x08000ca0                SysTick_DelaiMs
+ *fill*         0x08000cca        0x2 
  .text.SystemInit
-                0x08000cc8       0x58 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/System.c.obj
-                0x08000cc8                SystemInit
+                0x08000ccc       0x58 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/System.c.obj
+                0x08000ccc                SystemInit
  .text.TIM2_IRQHandler
-                0x08000d20       0x58 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/Timer2.c.obj
-                0x08000d20                TIM2_IRQHandler
- .text.main     0x08000d78      0x118 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/main.c.obj
-                0x08000d78                main
+                0x08000d24       0x58 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/Timer2.c.obj
+                0x08000d24                TIM2_IRQHandler
+ .text.main     0x08000d7c       0xfc CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/main.c.obj
+                0x08000d7c                main
  *(.glue_7)
- .glue_7        0x08000e90        0x0 linker stubs
+ .glue_7        0x08000e78        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x08000e90        0x0 linker stubs
+ .glue_7t       0x08000e78        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x08000e90        0x0 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
+ .eh_frame      0x08000e78        0x0 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
  *(.init)
- .init          0x08000e90        0x4 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crti.o
-                0x08000e90                _init
- .init          0x08000e94        0x8 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtn.o
+ .init          0x08000e78        0x4 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crti.o
+                0x08000e78                _init
+ .init          0x08000e7c        0x8 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtn.o
  *(.fini)
- .fini          0x08000e9c        0x4 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crti.o
-                0x08000e9c                _fini
- .fini          0x08000ea0        0x8 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtn.o
-                0x08000ea8                        . = ALIGN (0x4)
-                0x08000ea8                        _etext = .
+ .fini          0x08000e84        0x4 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crti.o
+                0x08000e84                _fini
+ .fini          0x08000e88        0x8 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtn.o
+                0x08000e90                        . = ALIGN (0x4)
+                0x08000e90                        _etext = .
 
-.vfp11_veneer   0x08000ea8        0x0
- .vfp11_veneer  0x08000ea8        0x0 linker stubs
+.vfp11_veneer   0x08000e90        0x0
+ .vfp11_veneer  0x08000e90        0x0 linker stubs
 
-.v4_bx          0x08000ea8        0x0
- .v4_bx         0x08000ea8        0x0 linker stubs
+.v4_bx          0x08000e90        0x0
+ .v4_bx         0x08000e90        0x0 linker stubs
 
-.iplt           0x08000ea8        0x0
- .iplt          0x08000ea8        0x0 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
+.iplt           0x08000e90        0x0
+ .iplt          0x08000e90        0x0 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
 
-.rodata         0x08000ea8       0x34
-                0x08000ea8                        . = ALIGN (0x4)
+.rodata         0x08000e90       0x1c
+                0x08000e90                        . = ALIGN (0x4)
  *(.rodata)
- .rodata        0x08000ea8       0x2d CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/main.c.obj
+ .rodata        0x08000e90       0x15 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/main.c.obj
  *(.rodata*)
- *fill*         0x08000ed5        0x3 
+ *fill*         0x08000ea5        0x3 
  .rodata.LCD_ADRESSE_LIGNE
-                0x08000ed8        0x4 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/LCD.c.obj
-                0x08000edc                        . = ALIGN (0x4)
+                0x08000ea8        0x4 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/LCD.c.obj
+                0x08000eac                        . = ALIGN (0x4)
 
-.ARM.extab      0x08000edc        0x0
-                0x08000edc                        . = ALIGN (0x4)
+.ARM.extab      0x08000eac        0x0
+                0x08000eac                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08000edc                        . = ALIGN (0x4)
+                0x08000eac                        . = ALIGN (0x4)
 
-.ARM            0x08000edc        0x0
-                0x08000edc                        . = ALIGN (0x4)
-                0x08000edc                        __exidx_start = .
+.ARM            0x08000eac        0x0
+                0x08000eac                        . = ALIGN (0x4)
+                0x08000eac                        __exidx_start = .
  *(.ARM.exidx*)
-                0x08000edc                        __exidx_end = .
-                0x08000edc                        . = ALIGN (0x4)
+                0x08000eac                        __exidx_end = .
+                0x08000eac                        . = ALIGN (0x4)
 
-.preinit_array  0x08000edc        0x0
-                0x08000edc                        . = ALIGN (0x4)
-                0x08000edc                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x08000eac        0x0
+                0x08000eac                        . = ALIGN (0x4)
+                0x08000eac                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x08000edc                        PROVIDE (__preinit_array_end = .)
-                0x08000edc                        . = ALIGN (0x4)
+                0x08000eac                        PROVIDE (__preinit_array_end = .)
+                0x08000eac                        . = ALIGN (0x4)
 
-.init_array     0x08000edc        0x4
-                0x08000edc                        . = ALIGN (0x4)
-                0x08000edc                        PROVIDE (__init_array_start = .)
+.init_array     0x08000eac        0x4
+                0x08000eac                        . = ALIGN (0x4)
+                0x08000eac                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x08000edc        0x4 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
-                0x08000ee0                        PROVIDE (__init_array_end = .)
-                0x08000ee0                        . = ALIGN (0x4)
+ .init_array    0x08000eac        0x4 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
+                0x08000eb0                        PROVIDE (__init_array_end = .)
+                0x08000eb0                        . = ALIGN (0x4)
 
-.fini_array     0x08000ee0        0x4
-                0x08000ee0                        . = ALIGN (0x4)
-                0x08000ee0                        PROVIDE (__fini_array_start = .)
+.fini_array     0x08000eb0        0x4
+                0x08000eb0                        . = ALIGN (0x4)
+                0x08000eb0                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08000ee0        0x4 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
-                0x08000ee4                        PROVIDE (__fini_array_end = .)
-                0x08000ee4                        . = ALIGN (0x4)
-                0x08000ee4                        _sidata = LOADADDR (.data)
+ .fini_array    0x08000eb0        0x4 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
+                0x08000eb4                        PROVIDE (__fini_array_end = .)
+                0x08000eb4                        . = ALIGN (0x4)
+                0x08000eb4                        _sidata = LOADADDR (.data)
 
-.rel.dyn        0x08000ee4        0x0
- .rel.iplt      0x08000ee4        0x0 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
+.rel.dyn        0x08000eb4        0x0
+ .rel.iplt      0x08000eb4        0x0 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
 
-.data           0x20000000        0x0 load address 0x08000ee4
+.data           0x20000000        0x0 load address 0x08000eb4
                 0x20000000                        _sdata = .
  *(.data)
  *(.data*)
@@ -721,10 +721,10 @@ LOAD /Users/matisserheaume-viale/Library/Application Support/Code/User/globalSto
  *(.RamFunc*)
                 0x20000000                        . = ALIGN (0x4)
 
-.igot.plt       0x20000000        0x0 load address 0x08000ee4
+.igot.plt       0x20000000        0x0 load address 0x08000eb4
  .igot.plt      0x20000000        0x0 /Users/matisserheaume-viale/Library/Application Support/Code/User/globalStorage/mylonics.embedded-build-tools/tools/arm-none-eabi-gcc/bin/../lib/gcc/arm-none-eabi/15.2.1/thumb/v7-m/nofp/crtbegin.o
 
-.tdata          0x20000000        0x0 load address 0x08000ee4
+.tdata          0x20000000        0x0 load address 0x08000eb4
  *(.tdata .tdata.* .gnu.linkonce.td.*)
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _edata = .
@@ -741,7 +741,7 @@ LOAD /Users/matisserheaume-viale/Library/Application Support/Code/User/globalSto
                 [!provide]                        PROVIDE (__data_source_end = __tdata_source_end)
                 [!provide]                        PROVIDE (__data_source_size = (__data_source_end - __data_source))
 
-.tbss           0x20000000        0x0 load address 0x08000ee4
+.tbss           0x20000000        0x0 load address 0x08000eb4
                 0x20000000                        _sbss = .
                 0x20000000                        __bss_start__ = _sbss
                 [!provide]                        PROVIDE (__bss_start = .)
@@ -759,7 +759,7 @@ LOAD /Users/matisserheaume-viale/Library/Application Support/Code/User/globalSto
                 [!provide]                        PROVIDE (__arm32_tls_tcb_offset = MAX (0x8, __tls_align))
                 [!provide]                        PROVIDE (__arm64_tls_tcb_offset = MAX (0x10, __tls_align))
 
-.bss            0x20000000       0x28 load address 0x08000ee4
+.bss            0x20000000       0x28 load address 0x08000eb4
  *(.bss)
  *(.bss*)
  .bss.completed.1
@@ -780,7 +780,7 @@ LOAD /Users/matisserheaume-viale/Library/Application Support/Code/User/globalSto
                 [!provide]                        PROVIDE (__non_tls_bss_start = ADDR (.bss))
 
 ._user_heap_stack
-                0x20000028      0x600 load address 0x08000ee4
+                0x20000028      0x600 load address 0x08000eb4
                 0x20000028                        . = ALIGN (0x8)
                 0x20000028                        PROVIDE (end = .)
                 [!provide]                        PROVIDE (_end = .)
@@ -906,7 +906,7 @@ LOAD linker stubs
  .debug_rnglists
                 0x00000177       0x14 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/main.c.obj
 
-.debug_line     0x00000000     0x1f13
+.debug_line     0x00000000     0x1f11
  .debug_line    0x00000000      0x542 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/ADC.c.obj
  .debug_line    0x00000542      0x5a8 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/I2C.c.obj
  .debug_line    0x00000aea      0x3ff CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/LCD.c.obj
@@ -914,8 +914,8 @@ LOAD linker stubs
  .debug_line    0x0000130d      0x2ac CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/SysTick.c.obj
  .debug_line    0x000015b9      0x27b CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/System.c.obj
  .debug_line    0x00001834      0x339 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/Timer2.c.obj
- .debug_line    0x00001b6d      0x339 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/main.c.obj
- .debug_line    0x00001ea6       0x6d CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/startup_stm32f103xb.s.obj
+ .debug_line    0x00001b6d      0x337 CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/main.c.obj
+ .debug_line    0x00001ea4       0x6d CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/startup_stm32f103xb.s.obj
 
 .debug_str      0x00000000      0xc3f
  .debug_str     0x00000000      0xc3f CMakeFiles/firmware.dir/Users/matisserheaume-viale/Code/TEP-Session-3-2026-2027/243-356-LI_-_Programmation_3_-_Microcontroleurs_et_peripheriques/Laboratoires/Lab_5/Src/ADC.c.obj
