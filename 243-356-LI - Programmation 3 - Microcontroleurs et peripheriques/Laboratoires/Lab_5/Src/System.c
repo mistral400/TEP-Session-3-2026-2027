@@ -29,7 +29,6 @@ void SystemInit(void)
     while ((RCC_CFGR & RCC_SYSCLK_STATUS) != 0UL)
     {
     }
-
     /* HSI 8 MHz sans division: SYSCLK, PCLK1 et PCLK2 valent 8 MHz. */
     RCC_CFGR &= ~RCC_BUS_PRESCALERS;
 }

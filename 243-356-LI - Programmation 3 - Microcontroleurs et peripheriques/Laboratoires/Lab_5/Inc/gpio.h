@@ -6,6 +6,8 @@
 #define LED_OFF 0u // Met l'état de la LED à éteinte
 #define LED_ON  1u // Met l'état de la LED à allumée
 
+void GPIOA_ConfigurerPA0Analogique(void); // Configure PA0 comme entrée analogique
+
 void LED_Init(void); // Configure la broche de la LED comme sortie
 void LED_Set(uint8_t etat); // Met l'état de la LED (LED_ON ou LED_OFF)
 void LED_Toggle(void); // Change l'état de la LED

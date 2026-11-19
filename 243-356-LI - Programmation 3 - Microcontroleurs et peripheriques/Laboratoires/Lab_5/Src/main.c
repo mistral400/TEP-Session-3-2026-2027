@@ -36,6 +36,8 @@ int main(void)
             angle_precedent = angle;
         }
 
+        LCD_Affichage_Potentiometre();
+
         PCA9685_SetServoAngle(0U, angle);
         SysTick_DelaiMs(50UL); // Pour éviter de saturer
     }

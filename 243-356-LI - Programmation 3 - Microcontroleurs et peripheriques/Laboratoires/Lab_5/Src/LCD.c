@@ -1,12 +1,12 @@
 
 #include "LCD.h"
+#include "SysTick.h"
+#include "ADC.h"
 
 #define RCC_APB2ENR (*(volatile uint32_t *)0x40021018UL)
 
 #define GPIOB_CRH  (*(volatile uint32_t *)0x40010C04UL)
 #define GPIOB_BSRR (*(volatile uint32_t *)0x40010C10UL)
-
-#define SYST_CVR (*(volatile uint32_t *)0xE000E018UL)
 
 #define LCD_RS_PIN 9U
 #define LCD_RW_PIN 10U
@@ -21,13 +21,7 @@
 #define GPIOB_CONFIG_MASK  0xFFFFFFF0UL
 #define GPIOB_CONFIG_OUTPUT 0x22222220UL
 
-#define SYSTICK_RELOAD     7999UL
-#define SYSTICK_PERIODE    (SYSTICK_RELOAD + 1UL)
-#define SYSTICK_DELAI_MAX_CYCLES (SYSTICK_PERIODE / 2UL)
-#define CPU_HZ             8000000UL
-
-#define US_PER_SECOND 1000000UL
-#define US_PER_MS     1000UL
+#define US_PER_MS 1000UL
 
 #define LCD_CMD_CLEAR        0x01U
 #define LCD_CMD_HOME         0x02U
@@ -61,41 +55,7 @@ static const uint8_t LCD_ADRESSE_LIGNE[LCD_ROWS] = {0x00U, 0x40U, 0x14U, 0x54U};
 
 static void LCD_Delai_Us(uint32_t microsecondes)
 {
-    uint32_t cyclesRestants;
-    uint32_t cyclesAAttendre;
-    uint32_t depart;
-    uint32_t actuel;
-    uint32_t cyclesEcoules;
-
-    cyclesRestants = (CPU_HZ / US_PER_SECOND) * microsecondes;
-
-    while (cyclesRestants > 0UL)
-    {
-        cyclesAAttendre = cyclesRestants;
-        if (cyclesAAttendre > SYSTICK_DELAI_MAX_CYCLES)
-        {
-            cyclesAAttendre = SYSTICK_DELAI_MAX_CYCLES;
-        }
-
-        depart = SYST_CVR;
-
-        /* Le délai reste sous la moitié d'une période SysTick. */
-        do
-        {
-            actuel = SYST_CVR;
-            if (depart >= actuel)
-            {
-                cyclesEcoules = depart - actuel;
-            }
-            else
-            {
-                cyclesEcoules = depart + SYSTICK_PERIODE - actuel;
-            }
-        }
-        while (cyclesEcoules < cyclesAAttendre);
-
-        cyclesRestants -= cyclesAAttendre;
-    }
+    SysTick_DelaiUs(microsecondes);
 }
 
 static void LCD_Delai_Ms(uint32_t millisecondes)
@@ -230,4 +190,70 @@ void LCD_Ecrire_Texte(const char *texte, uint8_t ligne, uint8_t colonne)
         colonne++;
     }
 }
+
+#define LCD_TENSION_LONGUEUR 11U
+#define LCD_LIGNE_TENSION    2U
+#define LCD_COLONNE_TENSION  1U
+#define ADC1_OFFSET_ARRONDI  (ADC1_CODE_MAX / 2UL)
+
+static bool tensionInitialisee = false;
+static char ancienTexteTension[LCD_TENSION_LONGUEUR] = {0};
+
+static uint32_t LCD_ConvertirMillivolts(uint16_t ADC_12Bits)
+{
+    return (((uint32_t)ADC_12Bits * ADC1_VREF_MV) + ADC1_OFFSET_ARRONDI)
+         / ADC1_CODE_MAX;
+}
+
+static void LCD_FormaterTension(uint32_t millivolts,
+                                char texte[LCD_TENSION_LONGUEUR])
+{
+    texte[0] = 'A';
+    texte[1] = 'D';
+    texte[2] = 'C';
+    texte[3] = '1';
+    texte[4] = ':';
+    texte[5] = (char)('0' + (millivolts / 1000UL));
+    texte[6] = '.';
+    texte[7] = (char)('0' + ((millivolts / 100UL) % 10UL));
+    texte[8] = (char)('0' + ((millivolts / 10UL) % 10UL));
+    texte[9] = (char)('0' + (millivolts % 10UL));
+    texte[10] = 'V';
+}
+
+static void LCD_EcrireTension(const char texte[LCD_TENSION_LONGUEUR])
+{
+    uint8_t index;
+
+    for (index = 0U; index < LCD_TENSION_LONGUEUR; index++)
+    {
+        if ((!tensionInitialisee) || (texte[index] != ancienTexteTension[index]))
+        {
+            LCD_Ecrire_Char((unsigned char)texte[index],
+                            LCD_LIGNE_TENSION,
+                            (uint8_t)(LCD_COLONNE_TENSION + index));
+            ancienTexteTension[index] = texte[index];
+        }
+    }
+
+    tensionInitialisee = true;
+}
+
+void LCD_Affichage_Potentiometre(void)
+{
+    uint16_t valeurADC;
+    uint32_t millivolts;
+    char texte[LCD_TENSION_LONGUEUR];
+
+    valeurADC = ADC1_Lire();
+    millivolts = LCD_ConvertirMillivolts(valeurADC);
+    LCD_FormaterTension(millivolts, texte);
+    LCD_EcrireTension(texte);
+}
+
+void LCD_Afficher_Potentiometre(void)
+{
+    LCD_Affichage_Potentiometre();
+}
+
 
