@@ -1,215 +1,121 @@
 #include "PCA9685.h"
+#include "I2C.h"
 #include "SysTick.h"
 
-#define PCA9685_ADRESSE 0x40U
+#define PCA9685_ADRESSE              0x40U
 
-#define PCA9685_REG_MODE1       0x00U
-#define PCA9685_REG_LED0_ON_L   0x06U
-#define PCA9685_REG_LED0_ON_H   0x07U
-#define PCA9685_REG_LED0_OFF_L  0x08U
-#define PCA9685_REG_LED0_OFF_H  0x09U
-#define PCA9685_REG_PRESCALE    0xFEU
+#define PCA9685_REG_MODE1            0x00U
+#define PCA9685_REG_LED0_ON_L        0x06U
+#define PCA9685_REG_LED0_ON_H        0x07U
+#define PCA9685_REG_LED0_OFF_L       0x08U
+#define PCA9685_REG_LED0_OFF_H       0x09U
+#define PCA9685_REG_PRESCALE         0xFEU
 
 #define PCA9685_MODE1_SLEEP          0x10U
 #define PCA9685_MODE1_AUTO_INCREMENT 0x20U
 #define PCA9685_MODE1_RESTART        0x80U
+#define PCA9685_MODE1_NORMAL         0x00U
 
-#define PCA9685_PRESCALE_50_HZ  121U
-#define PCA9685_PWM0_ON_L       0x00U
-#define PCA9685_PWM0_ON_H       0x00U
-#define PCA9685_PWM0_OFF_L      0x33U
-#define PCA9685_PWM0_OFF_H      0x01U
-// modifie le duty cycle
-#define PCA9685_NOMBRE_CANAUX 16U
-#define PCA9685_PWM_MAX 4096UL
-#define PCA9685_DUTY_MAX 100U
-#define PCA9685_FULL_ON 0x10U
-#define PCA9685_FULL_OFF 0x10U
-#define PCA9685_SERVO_MIN 102U // Environ 0,5 ms à 50 Hz; à calibrer.
-#define PCA9685_SERVO_MAX 512U // Environ 2,5 ms à 50 Hz; à calibrer.
-#define PCA9685_SERVO_ANGLE_MAX 180U
+#define PCA9685_PRESCALE_50_HZ       121U
+#define PCA9685_NOMBRE_CANAUX        16U
+#define PCA9685_REGISTRES_PAR_CANAL  4U
+#define PCA9685_COMPTE_MAX           4095U
 
-static uint8_t PCA9685_EcrireRegistre(uint8_t registre, uint8_t valeur)
+#define PCA9685_SERVO_MIN            205U // 1,0 ms à 50 Hz (205 / 4096 * 20 ms = 1,001 ms)
+#define PCA9685_SERVO_MAX            410U // 2,0 ms à 50 Hz (410 / 4096 * 20 ms = 2,002 ms)
+#define PCA9685_SERVO_ANGLE_MAX      180U
+
+#define PCA9685_OCTET_MASQUE         0xFFU
+#define PCA9685_OCTET_DECALAGE       8U
+
+// Initialise le PCA9685 pour fonctionner à 50 Hz en mode normal
+bool PCA9685_Init(void)
 {
-    uint8_t resultat = I2C_Start();
-    uint8_t resultatStop;
-
-    if (resultat != I2C_OK)
+    // 1. Mettre le circuit en veille (SLEEP) pour pouvoir modifier le PRESCALE
+    if (!I2C1_Ecrire_Registre(PCA9685_ADRESSE, PCA9685_REG_MODE1, PCA9685_MODE1_SLEEP))
     {
-        return resultat;
+        return false;
     }
 
-    resultat = I2C_AdresseEcriture(PCA9685_ADRESSE);
-    if (resultat == I2C_OK)
+    // 2. Configurer la fréquence PWM à 50 Hz (PRESCALE = 121 pour horloge interne 25 MHz)
+    if (!I2C1_Ecrire_Registre(PCA9685_ADRESSE, PCA9685_REG_PRESCALE, PCA9685_PRESCALE_50_HZ))
     {
-        I2C_EffacerADDR();
-        resultat = I2C_EnvoyerDonnee(registre);
-    }
-    if (resultat == I2C_OK)
-    {
-        resultat = I2C_EnvoyerDonnee(valeur);
+        return false;
     }
 
-    if (resultat == I2C_ERREUR_ARLO)
+    // 3. Sortir du mode SLEEP avec auto-incrémentation activée
+    if (!I2C1_Ecrire_Registre(PCA9685_ADRESSE, PCA9685_REG_MODE1, PCA9685_MODE1_AUTO_INCREMENT))
     {
-        return resultat;
+        return false;
     }
 
-    resultatStop = I2C_Stop();
-    if (resultat == I2C_OK)
-    {
-        resultat = resultatStop;
-    }
-
-    return resultat;
-}
-
-uint8_t PCA9685_TesterCommunication(void)
-{
-    uint8_t resultat = I2C_Start();
-    uint8_t resultatStop;
-
-    if (resultat != I2C_OK)
-    {
-        return resultat;
-    }
-
-    resultat = I2C_AdresseEcriture(PCA9685_ADRESSE);
-    if (resultat == I2C_OK)
-    {
-        I2C_EffacerADDR();
-    }
-    if (resultat == I2C_ERREUR_ARLO)
-    {
-        return resultat;
-    }
-
-    resultatStop = I2C_Stop();
-    if (resultat == I2C_OK)
-    {
-        resultat = resultatStop;
-    }
-
-    return resultat;
-}
-
-uint8_t PCA9685_ConfigurerPWM0(void)
-{
-    uint8_t resultat;
-
-    resultat = PCA9685_EcrireRegistre(PCA9685_REG_MODE1,
-                                     PCA9685_MODE1_SLEEP);
-    if (resultat != I2C_OK)
-    {
-        return resultat;
-    }
-
-    resultat = PCA9685_EcrireRegistre(PCA9685_REG_PRESCALE,
-                                     PCA9685_PRESCALE_50_HZ);
-    if (resultat != I2C_OK)
-    {
-        return resultat;
-    }
-
-    resultat = PCA9685_EcrireRegistre(PCA9685_REG_MODE1,
-                                     PCA9685_MODE1_AUTO_INCREMENT);
-    if (resultat != I2C_OK)
-    {
-        return resultat;
-    }
-
+    // 4. Délai d'au moins 500 µs pour la stabilisation de l'oscillateur interne
     SysTick_DelaiMs(1UL);
 
-    resultat = PCA9685_EcrireRegistre(PCA9685_REG_LED0_ON_L,
-                                     PCA9685_PWM0_ON_L);
-    if (resultat != I2C_OK)
+    // 5. Réveiller et redémarrer la logique PWM (RESTART)
+    if (!I2C1_Ecrire_Registre(PCA9685_ADRESSE, PCA9685_REG_MODE1,
+                              PCA9685_MODE1_RESTART | PCA9685_MODE1_AUTO_INCREMENT))
     {
-        return resultat;
+        return false;
     }
 
-    resultat = PCA9685_EcrireRegistre(PCA9685_REG_LED0_ON_H,
-                                     PCA9685_PWM0_ON_H);
-    if (resultat != I2C_OK)
-    {
-        return resultat;
-    }
-
-    resultat = PCA9685_EcrireRegistre(PCA9685_REG_LED0_OFF_L,
-                                     PCA9685_PWM0_OFF_L);
-    if (resultat != I2C_OK)
-    {
-        return resultat;
-    }
-
-    resultat = PCA9685_EcrireRegistre(PCA9685_REG_LED0_OFF_H,
-                                     PCA9685_PWM0_OFF_H);
-    if (resultat != I2C_OK)
-    {
-        return resultat;
-    }
-
-    return PCA9685_EcrireRegistre(PCA9685_REG_MODE1,
-                                  PCA9685_MODE1_RESTART
-                                | PCA9685_MODE1_AUTO_INCREMENT);
+    return true;
 }
 
-void PCA9685_SetDutyCycle(uint8_t canal, uint8_t dutyCycle)
+// Configure les comptes de début (ON) et de fin (OFF) pour un canal PWM (0 à 15)
+bool PCA9685_Definir_PWM(uint8_t canal, uint16_t debut, uint16_t fin)
 {
-    uint16_t valeur;
-    uint8_t registre;
-    uint8_t onH = 0U;
-    uint8_t offL = 0U;
-    uint8_t offH = 0U;
+    uint8_t registreBase;
 
-    if ((canal >= PCA9685_NOMBRE_CANAUX) || (dutyCycle > 100U))
+    if ((canal >= PCA9685_NOMBRE_CANAUX)
+        || (debut > PCA9685_COMPTE_MAX)
+        || (fin > PCA9685_COMPTE_MAX))
     {
-        return;
+        return false;
     }
 
-    valeur = ((uint32_t)dutyCycle * PCA9685_PWM_MAX) / PCA9685_DUTY_MAX;
+    registreBase = PCA9685_REG_LED0_ON_L + (canal * PCA9685_REGISTRES_PAR_CANAL);
 
-    if (dutyCycle == 0U)
+    if (!I2C1_Ecrire_Registre(PCA9685_ADRESSE, registreBase,
+                              (uint8_t)(debut & PCA9685_OCTET_MASQUE)))
     {
-        offH = PCA9685_FULL_OFF;
-    }
-    else if (dutyCycle == 100U)
-    {
-        onH = PCA9685_FULL_ON;
-    }
-    else
-    {
-        offL = (uint8_t)(valeur & 0xFFU);
-        offH = (uint8_t)((valeur >> 8U) & 0x0FU);
+        return false;
     }
 
-    registre = PCA9685_REG_LED0_ON_L + (canal * 4U);
+    if (!I2C1_Ecrire_Registre(PCA9685_ADRESSE, (uint8_t)(registreBase + 1U),
+                              (uint8_t)((debut >> PCA9685_OCTET_DECALAGE) & PCA9685_OCTET_MASQUE)))
+    {
+        return false;
+    }
 
-    PCA9685_EcrireRegistre(registre, 0U);
-    PCA9685_EcrireRegistre(registre + 1U, onH);
-    PCA9685_EcrireRegistre(registre + 2U, offL);
-    PCA9685_EcrireRegistre(registre + 3U, offH);
+    if (!I2C1_Ecrire_Registre(PCA9685_ADRESSE, (uint8_t)(registreBase + 2U),
+                              (uint8_t)(fin & PCA9685_OCTET_MASQUE)))
+    {
+        return false;
+    }
+
+    if (!I2C1_Ecrire_Registre(PCA9685_ADRESSE, (uint8_t)(registreBase + 3U),
+                              (uint8_t)((fin >> PCA9685_OCTET_DECALAGE) & PCA9685_OCTET_MASQUE)))
+    {
+        return false;
+    }
+
+    return true;
 }
 
-void PCA9685_SetServoAngle(uint8_t canal, uint8_t angle)
-{
-    uint16_t valeur;
-    uint8_t registre;
 
-    if ((canal >= PCA9685_NOMBRE_CANAUX) ||
-        (angle > PCA9685_SERVO_ANGLE_MAX))
+bool PCA9685_Definir_Angle(uint8_t canal, uint8_t angle)
+{
+    uint16_t compteFin;
+
+    if ((canal >= PCA9685_NOMBRE_CANAUX) || (angle > PCA9685_SERVO_ANGLE_MAX))
     {
-        return;
+        return false;
     }
 
-    valeur = PCA9685_SERVO_MIN +
-             ((uint32_t)angle *
-             (PCA9685_SERVO_MAX - PCA9685_SERVO_MIN)) /
-             PCA9685_SERVO_ANGLE_MAX;
+    compteFin = (uint16_t)(PCA9685_SERVO_MIN
+              + (((uint32_t)angle * (PCA9685_SERVO_MAX - PCA9685_SERVO_MIN))
+                 / PCA9685_SERVO_ANGLE_MAX));
 
-    registre = PCA9685_REG_LED0_ON_L + (canal * 4U);
-
-    PCA9685_EcrireRegistre(registre, 0U);
-    PCA9685_EcrireRegistre(registre + 1U, 0U);
-    PCA9685_EcrireRegistre(registre + 2U, (uint8_t)(valeur & 0xFFU));
-    PCA9685_EcrireRegistre(registre + 3U, (uint8_t)(valeur >> 8U));
+    return PCA9685_Definir_PWM(canal, 0U, compteFin);
 }

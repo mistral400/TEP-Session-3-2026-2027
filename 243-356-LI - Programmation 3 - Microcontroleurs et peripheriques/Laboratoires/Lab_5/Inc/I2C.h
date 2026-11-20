@@ -1,6 +1,7 @@
 #ifndef I2C_H
 #define I2C_H
 
+#include <stdbool.h>
 #include <stdint.h>
 
 #define I2C_OK                  0U
@@ -12,12 +13,8 @@
 #define I2C_ERREUR_ADRESSE      6U
 #define I2C_ERREUR_SEQUENCE     7U
 
-void I2C_Init(void);
-uint8_t I2C_Start(void);
-uint8_t I2C_AdresseEcriture(uint8_t adresse);
-void I2C_EffacerADDR(void);
-uint8_t I2C_EnvoyerDonnee(uint8_t donnee);
-uint8_t I2C_Stop(void);
-uint8_t I2C_EcrireOctet(uint8_t adresse, uint8_t donnee);
+void I2C1_Init(void);
+bool I2C1_Ecrire_Registre(uint8_t adresse, uint8_t registre, uint8_t donnee);
+bool I2C1_Lire_Registre(uint8_t adresse, uint8_t registre, uint8_t *donnee);
 
 #endif

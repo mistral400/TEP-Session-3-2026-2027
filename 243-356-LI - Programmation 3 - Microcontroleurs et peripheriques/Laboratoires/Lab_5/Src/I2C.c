@@ -1,6 +1,7 @@
 
 #include "I2C.h" // Inclut les fonctions et constantes de la communication I2C
-#include <stdint.h> // Permet d'utiliser les types uint8_t et uint32_t
+#include <stdbool.h>
+#include <stdint.h>
 
 // Registres de gestion des horloges et des périphériques du STM32F103
 #define RCC_APB2ENR (*(volatile uint32_t *)0x40021018UL) // Active les horloges GPIO et AFIO
@@ -33,9 +34,10 @@
 
 // Bits de configuration du registre I2C1_CR1
 #define I2C_CR1_PE          (1UL << 0U) // Active le périphérique I2C
-#define I2C_CR1_SWRST       (1UL << 15U) // Effectue une réinitialisation logicielle
 #define I2C_CR1_START       (1UL << 8U) // Génère une condition START
 #define I2C_CR1_STOP        (1UL << 9U) // Génère une condition STOP
+#define I2C_CR1_ACK         (1UL << 10U) // Active l'acquittement automatique
+#define I2C_CR1_SWRST       (1UL << 15U) // Effectue une réinitialisation logicielle
 
 // Masques pour configurer la fréquence et les temporisations
 #define I2C_CR2_FREQ_MASK   0x3FUL // Masque des bits de fréquence APB1
@@ -46,6 +48,7 @@
 #define I2C_SR1_SB           (1UL << 0U) // Condition START générée
 #define I2C_SR1_ADDR         (1UL << 1U) // Adresse envoyée et acquittée
 #define I2C_SR1_BTF          (1UL << 2U) // Transfert d'octet terminé
+#define I2C_SR1_RXNE         (1UL << 6U) // Registre de données réception non vide
 #define I2C_SR1_TXE          (1UL << 7U) // Registre de transmission vide
 #define I2C_SR1_BERR         (1UL << 8U) // Erreur de communication sur le bus
 #define I2C_SR1_ARLO         (1UL << 9U) // Perte d'arbitrage
@@ -71,6 +74,7 @@
 #define I2C_STANDARD_HZ     100000UL // Vitesse I2C standard de 100 kHz
 #define I2C_MAX_ADRESSE     0x7FU // Adresse I2C maximale sur 7 bits
 #define I2C_TIMEOUT_COMPTE  100000UL // Nombre maximal d'itérations avant une erreur
+#define I2C_READ_BIT        1U // Bit R/W à 1 pour lecture
 
 // Attend qu'un indicateur du registre SR1 soit activé
 static uint8_t I2C_AttendreSR1(uint32_t drapeau)
@@ -200,7 +204,7 @@ static uint8_t I2C_RecupererBus(void)
     GPIOB_CRL = (GPIOB_CRL & ~GPIO_PB6_PB7_MASK)
               | GPIO_PB6_CONFIG | GPIO_PB7_CONFIG;
 
-    I2C_Init(); // Réinitialise et reconfigure le périphérique I2C1
+    I2C1_Init(); // Réinitialise et reconfigure le périphérique I2C1
 
     // Vérifie que les deux lignes sont au niveau haut
     if ((GPIOB_IDR & I2C_LIGNES_MASK) != I2C_LIGNES_MASK)
@@ -222,8 +226,18 @@ static void I2C_EffacerErreurs(void)
     I2C1_SR1 &= ~(I2C_SR1_BERR | I2C_SR1_ARLO | I2C_SR1_AF); // Efface les erreurs BERR, ARLO et AF
 }
 
+// Efface le drapeau ADDR après la transmission ou la réception d'adresse
+static void I2C_EffacerADDR(void)
+{
+    volatile uint32_t lecture; // Variable utilisée pour lire les registres
+
+    lecture = I2C1_SR1; // Première lecture nécessaire pour effacer ADDR
+    lecture = I2C1_SR2; // Deuxième lecture qui termine l'effacement
+    (void)lecture; // Évite un avertissement de variable inutilisée
+}
+
 // Initialise le périphérique I2C1 en mode standard à 100 kHz
-void I2C_Init(void)
+void I2C1_Init(void)
 {
     // Active les horloges nécessaires à la communication I2C
     RCC_APB2ENR |= AFIO_CLOCK_ENABLE; // Active l'horloge AFIO
@@ -264,12 +278,12 @@ void I2C_Init(void)
 
     I2C1_TRISE = trise & I2C_TRISE_MASK; // Configure le registre TRISE
 
-    // Active le périphérique I2C1
-    I2C1_CR1 |= I2C_CR1_PE; // Permet le fonctionnement du bus I2C
+    // Active le périphérique I2C1 et active l'acquittement
+    I2C1_CR1 |= (I2C_CR1_PE | I2C_CR1_ACK);
 }
 
 // Génère une condition START pour commencer une communication I2C
-uint8_t I2C_Start(void)
+static uint8_t I2C_Start(void)
 {
     uint8_t resultat = I2C_AttendreBusLibre(); // Attend que le bus soit disponible
 
@@ -290,7 +304,8 @@ uint8_t I2C_Start(void)
     {
         if (resultat != I2C_ERREUR_ARLO) // Vérifie si l'arbitrage n'a pas été perdu
         {
-            I2C_Stop(); // Tente de terminer la communication
+            (void)I2C1_CR1; // Maintient
+            I2C1_CR1 |= I2C_CR1_STOP; // Tente de libérer
         }
         I2C_EffacerErreurs(); // Efface les indicateurs d'erreur
     }
@@ -298,8 +313,16 @@ uint8_t I2C_Start(void)
     return resultat; // Retourne le résultat de la condition START
 }
 
+// Génère une condition RESTART (répétition de START sans libérer le bus)
+static uint8_t I2C_Restart(void)
+{
+    I2C_EffacerErreurs();
+    I2C1_CR1 |= I2C_CR1_START;
+    return I2C_AttendreSR1(I2C_SR1_SB);
+}
+
 // Transmet l'adresse I2C d'un périphérique en mode écriture
-uint8_t I2C_AdresseEcriture(uint8_t adresse)
+static uint8_t I2C_AdresseEcriture(uint8_t adresse)
 {
     if (adresse > I2C_MAX_ADRESSE) // Vérifie que l'adresse tient sur 7 bits
     {
@@ -314,18 +337,24 @@ uint8_t I2C_AdresseEcriture(uint8_t adresse)
     return I2C_AttendreSR1(I2C_SR1_ADDR); // Attend l'acquittement de l'adresse
 }
 
-// Efface le drapeau ADDR après la transmission de l'adresse
-void I2C_EffacerADDR(void)
+// Transmet l'adresse I2C d'un périphérique en mode lecture
+static uint8_t I2C_AdresseLecture(uint8_t adresse)
 {
-    volatile uint32_t lecture; // Variable utilisée pour lire les registres
+    if (adresse > I2C_MAX_ADRESSE) // Vérifie que l'adresse tient sur 7 bits
+    {
+        return I2C_ERREUR_ADRESSE; // Retourne une erreur d'adresse
+    }
+    if ((I2C1_SR1 & I2C_SR1_SB) == 0UL) // Vérifie qu'une condition START a été générée
+    {
+        return I2C_ERREUR_SEQUENCE; // Retourne une erreur de séquence
+    }
 
-    lecture = I2C1_SR1; // Première lecture nécessaire pour effacer ADDR
-    lecture = I2C1_SR2; // Deuxième lecture qui termine l'effacement
-    (void)lecture; // Évite un avertissement de variable inutilisée
+    I2C1_DR = ((uint32_t)adresse << 1U) | I2C_READ_BIT; // Transmet l'adresse avec le bit lecture à 1
+    return I2C_AttendreSR1(I2C_SR1_ADDR); // Attend l'acquittement de l'adresse
 }
 
 // Transmet un octet de données sur le bus I2C
-uint8_t I2C_EnvoyerDonnee(uint8_t donnee)
+static uint8_t I2C_EnvoyerDonnee(uint8_t donnee)
 {
     uint8_t resultat; // Stocke le résultat des vérifications
 
@@ -345,7 +374,7 @@ uint8_t I2C_EnvoyerDonnee(uint8_t donnee)
 }
 
 // Génère une condition STOP pour terminer la communication I2C
-uint8_t I2C_Stop(void)
+static uint8_t I2C_Stop(void)
 {
     uint8_t resultat; // Stocke le résultat de l'opération
 
@@ -361,35 +390,150 @@ uint8_t I2C_Stop(void)
     return resultat; // Retourne le résultat de l'opération
 }
 
-// Effectue une transmission complète d'un octet vers un périphérique I2C
-uint8_t I2C_EcrireOctet(uint8_t adresse, uint8_t donnee)
+// Écrit une donnée dans un registre d'un périphérique I2C
+bool I2C1_Ecrire_Registre(uint8_t adresse, uint8_t registre, uint8_t donnee)
 {
-    uint8_t resultat = I2C_Start(); // Génère une condition START
-    uint8_t resultatStop; // Stocke le résultat de la condition STOP
+    uint8_t resultat;
+    uint8_t resultatStop;
 
-    if (resultat != I2C_OK) // Vérifie si START a échoué
+    if (adresse > I2C_MAX_ADRESSE)
     {
-        return resultat; // Retourne l'erreur rencontrée
+        return false;
     }
 
-    resultat = I2C_AdresseEcriture(adresse); // Transmet l'adresse du périphérique
-    if (resultat == I2C_OK) // Vérifie si le périphérique a répondu
+    resultat = I2C_Start();
+    if (resultat != I2C_OK)
     {
-        I2C_EffacerADDR(); // Efface le drapeau ADDR
-        resultat = I2C_EnvoyerDonnee(donnee); // Transmet l'octet de données
+        return false;
     }
 
-    if (resultat == I2C_ERREUR_ARLO) // Vérifie une perte d'arbitrage
+    resultat = I2C_AdresseEcriture(adresse);
+    if (resultat == I2C_OK)
     {
-        I2C_EffacerErreurs(); // Efface les indicateurs d'erreur
-        return resultat; // Retourne l'erreur d'arbitrage
+        I2C_EffacerADDR();
+        resultat = I2C_EnvoyerDonnee(registre);
     }
 
-    resultatStop = I2C_Stop(); // Génère une condition STOP
-    if (resultat == I2C_OK) // Vérifie si la transmission a réussi
+    if (resultat == I2C_OK)
     {
-        resultat = resultatStop; // Conserve le résultat de la condition STOP
+        resultat = I2C_EnvoyerDonnee(donnee);
     }
 
-    return resultat; // Retourne le résultat final de la transmission
+    if (resultat == I2C_ERREUR_ARLO)
+    {
+        I2C_EffacerErreurs();
+        return false;
+    }
+
+    resultatStop = I2C_Stop();
+    if ((resultat != I2C_OK) || (resultatStop != I2C_OK))
+    {
+        return false;
+    }
+
+    return true;
+}
+
+// Lit une donnée depuis un registre d'un périphérique I2C
+bool I2C1_Lire_Registre(uint8_t adresse, uint8_t registre, uint8_t *donnee)
+{
+    uint8_t resultat;
+
+    if ((donnee == (void *)0) || (adresse > I2C_MAX_ADRESSE))
+    {
+        return false;
+    }
+
+    // 1. Condition START
+    resultat = I2C_Start();
+    if (resultat != I2C_OK)
+    {
+        return false;
+    }
+
+    // 2. Écriture de l'adresse de la cible
+    resultat = I2C_AdresseEcriture(adresse);
+    if (resultat != I2C_OK)
+    {
+        if (resultat != I2C_ERREUR_ARLO)
+        {
+            (void)I2C_Stop();
+        }
+        I2C_EffacerErreurs();
+        return false;
+    }
+    I2C_EffacerADDR();
+
+    // 3. Écriture du numéro de registre à lire
+    resultat = I2C_EnvoyerDonnee(registre);
+    if (resultat != I2C_OK)
+    {
+        if (resultat != I2C_ERREUR_ARLO)
+        {
+            (void)I2C_Stop();
+        }
+        I2C_EffacerErreurs();
+        return false;
+    }
+
+    // 4. Condition RESTART (répétition du START)
+    resultat = I2C_Restart();
+    if (resultat != I2C_OK)
+    {
+        if (resultat != I2C_ERREUR_ARLO)
+        {
+            (void)I2C_Stop();
+        }
+        I2C_EffacerErreurs();
+        return false;
+    }
+
+    // 5. Adresse de la cible en lecture
+    resultat = I2C_AdresseLecture(adresse);
+    if (resultat != I2C_OK)
+    {
+        if (resultat != I2C_ERREUR_ARLO)
+        {
+            (void)I2C_Stop();
+        }
+        I2C_EffacerErreurs();
+        return false;
+    }
+
+    // 6. Lecture avec NACK et STOP (procédure pour 1 octet STM32)
+    // Désactiver ACK pour générer un NACK après l'unique octet reçu
+    I2C1_CR1 &= ~I2C_CR1_ACK;
+
+    // Effacer le drapeau ADDR
+    I2C_EffacerADDR();
+
+    // Programmer immédiatement la condition STOP
+    I2C1_CR1 |= I2C_CR1_STOP;
+
+    // Attendre que l'octet soit reçu dans DR (drapeau RXNE)
+    resultat = I2C_AttendreSR1(I2C_SR1_RXNE);
+    if (resultat != I2C_OK)
+    {
+        (void)I2C_AttendreBusLibre();
+        I2C1_CR1 |= I2C_CR1_ACK; // Rétablir ACK
+        I2C_EffacerErreurs();
+        return false;
+    }
+
+    // Lire la donnée dans le registre DR
+    *donnee = (uint8_t)I2C1_DR;
+
+    // Attendre que le bus soit complètement libéré après la fin du STOP
+    resultat = I2C_AttendreBusLibre();
+
+    // Rétablir l'ACK pour les futures communications
+    I2C1_CR1 |= I2C_CR1_ACK;
+
+    if (resultat != I2C_OK)
+    {
+        I2C_EffacerErreurs();
+        return false;
+    }
+
+    return true;
 }

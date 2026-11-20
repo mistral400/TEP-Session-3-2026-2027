@@ -22,7 +22,7 @@ g_pfnVectors:
     .rept 28
     .word Default_Handler // IRQ 0 à 27
     .endr
-    .word TIM2_IRQHandler // IRQ 28, vecteur 44
+    .word Default_Handler // IRQ 28 (TIM2 inutilisé)
     .rept 14
     .word Default_Handler // IRQ 29 à 42 du STM32F103xB
     .endr

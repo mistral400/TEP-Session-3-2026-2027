@@ -1,7 +1,6 @@
 
 #include "LCD.h"
 #include "SysTick.h"
-#include "ADC.h"
 
 #define RCC_APB2ENR (*(volatile uint32_t *)0x40021018UL)
 
@@ -189,71 +188,6 @@ void LCD_Ecrire_Texte(const char *texte, uint8_t ligne, uint8_t colonne)
         texte++;
         colonne++;
     }
-}
-
-#define LCD_TENSION_LONGUEUR 11U
-#define LCD_LIGNE_TENSION    2U
-#define LCD_COLONNE_TENSION  1U
-#define ADC1_OFFSET_ARRONDI  (ADC1_CODE_MAX / 2UL)
-
-static bool tensionInitialisee = false;
-static char ancienTexteTension[LCD_TENSION_LONGUEUR] = {0};
-
-static uint32_t LCD_ConvertirMillivolts(uint16_t ADC_12Bits)
-{
-    return (((uint32_t)ADC_12Bits * ADC1_VREF_MV) + ADC1_OFFSET_ARRONDI)
-         / ADC1_CODE_MAX;
-}
-
-static void LCD_FormaterTension(uint32_t millivolts,
-                                char texte[LCD_TENSION_LONGUEUR])
-{
-    texte[0] = 'A';
-    texte[1] = 'D';
-    texte[2] = 'C';
-    texte[3] = '1';
-    texte[4] = ':';
-    texte[5] = (char)('0' + (millivolts / 1000UL));
-    texte[6] = '.';
-    texte[7] = (char)('0' + ((millivolts / 100UL) % 10UL));
-    texte[8] = (char)('0' + ((millivolts / 10UL) % 10UL));
-    texte[9] = (char)('0' + (millivolts % 10UL));
-    texte[10] = 'V';
-}
-
-static void LCD_EcrireTension(const char texte[LCD_TENSION_LONGUEUR])
-{
-    uint8_t index;
-
-    for (index = 0U; index < LCD_TENSION_LONGUEUR; index++)
-    {
-        if ((!tensionInitialisee) || (texte[index] != ancienTexteTension[index]))
-        {
-            LCD_Ecrire_Char((unsigned char)texte[index],
-                            LCD_LIGNE_TENSION,
-                            (uint8_t)(LCD_COLONNE_TENSION + index));
-            ancienTexteTension[index] = texte[index];
-        }
-    }
-
-    tensionInitialisee = true;
-}
-
-void LCD_Affichage_Potentiometre(void)
-{
-    uint16_t valeurADC;
-    uint32_t millivolts;
-    char texte[LCD_TENSION_LONGUEUR];
-
-    valeurADC = ADC1_Lire();
-    millivolts = LCD_ConvertirMillivolts(valeurADC);
-    LCD_FormaterTension(millivolts, texte);
-    LCD_EcrireTension(texte);
-}
-
-void LCD_Afficher_Potentiometre(void)
-{
-    LCD_Affichage_Potentiometre();
 }
 
 

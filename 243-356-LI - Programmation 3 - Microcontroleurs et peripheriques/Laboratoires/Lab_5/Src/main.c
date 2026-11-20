@@ -4,6 +4,10 @@
 #include "PCA9685.h"
 #include "SysTick.h"
 
+#define CANAL_SERVO       0U
+#define ANGLE_MAX_DEGRES  180UL
+#define DELAI_BOUCLE_MS   50UL
+
 int main(void)
 {
     uint16_t valeurADC;
@@ -13,15 +17,21 @@ int main(void)
     SysTick_Init();
     LCD_Init();
     ADC1_Init();
-    I2C_Init();
+    I2C1_Init();
 
-
-    PCA9685_ConfigurerPWM0();
+    if (!PCA9685_Init())
+    {
+        LCD_Ecrire_Texte("ERREUR PCA9685", 1U, 1U);
+        while (1)
+        {
+        }
+    }
 
     while (1)
     {
         valeurADC = ADC1_Lire();
-        angle = (uint8_t)((((uint32_t)valeurADC * 180UL) + 2047UL)
+        // Estimation linéaire : les codes ADC aux butées ne sont pas mesurés.
+        angle = (uint8_t)((((uint32_t)valeurADC * ANGLE_MAX_DEGRES) + (ADC1_CODE_MAX / 2UL))
                         / ADC1_CODE_MAX);
 
         if (angle != angle_precedent)
@@ -33,12 +43,13 @@ int main(void)
             ligneAngle[8] = (char)('0' + (angle % 10U));
 
             LCD_Ecrire_Texte(ligneAngle, 1U, 1U);
-            angle_precedent = angle;
+
+            if (PCA9685_Definir_Angle(CANAL_SERVO, angle))
+            {
+                angle_precedent = angle;
+            }
         }
 
-        LCD_Affichage_Potentiometre();
-
-        PCA9685_SetServoAngle(0U, angle);
-        SysTick_DelaiMs(50UL); // Pour éviter de saturer
+        SysTick_DelaiMs(DELAI_BOUCLE_MS);
     }
 }

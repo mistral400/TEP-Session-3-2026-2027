@@ -30,7 +30,7 @@
 #define ADC1_ADON            (1UL << 0U)
 #define ADC1_RSTCAL          (1UL << 3U)
 #define ADC1_CAL             (1UL << 2U)
-#define ADC1_EXTSEL_SOFTWARE (7UL << 17U)
+#define ADC1_EXTSEL_SOFTWARE (7UL << 17U) // 
 #define ADC1_EXTTRIG         (1UL << 20U)
 #define ADC1_SWSTART         (1UL << 22U)
 #define ADC1_RANK1_CHANNEL0  0UL
